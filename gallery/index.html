@@ -1,0 +1,91 @@
+
+<meta charset="utf-8"/>
+<title>Gallery</title>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="gallery/css/bootstrap-image-gallery.css"/>
+<link rel="stylesheet" href="gallery/css/demo.css"/>
+
+<div class="container">
+    <h1>Personnal Gallery</h1>
+    <blockquote>
+        <p>All picture are made by me with my Sony a5000 or my smartphone</p>
+        <!--<p>Bootstrap Image Gallery is an extension to <a href="https://blueimp.github.io/Gallery/">blueimp Gallery</a>, a touch-enabled, responsive and customizable image &amp; video gallery.<br/>It displays images and videos in the modal dialog of the <a href="http://getbootstrap.com/">Bootstrap</a> framework, features swipe, mouse and keyboard navigation, transition effects, fullscreen support and on-demand content loading and can be extended to display additional content types.</p>
+-->
+    </blockquote>
+    <form class="form-inline">
+        <!--<div class="form-group">
+            <button id="video-gallery-button" type="button" class="btn btn-success btn-lg">
+                <i class="glyphicon glyphicon-film"></i>
+                Launch Video Gallery
+            </button>
+        </div>-->
+        <div class="form-group">
+            <button id="image-gallery-button" type="button" class="btn btn-primary btn-lg">
+                <i class="glyphicon glyphicon-picture"></i>
+                Launch Image Gallery
+            </button>
+        </div>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-success btn-lg">
+            <i class="glyphicon glyphicon-leaf"></i>
+            <input id="borderless-checkbox" type="checkbox"/> Borderless
+          </label>
+          <label class="btn btn-primary btn-lg">
+            <i class="glyphicon glyphicon-fullscreen"></i>
+            <input id="fullscreen-checkbox" type="checkbox"/> Fullscreen
+          </label>
+        </div>
+    </form>
+    <br/>
+    <!-- The container for the list of example images -->
+    <div id="links">
+    <a href="images/4427.JPG" title="4427" data-gallery>
+        <img src="images/4427.jpg" alt="4427" height="75" width="75">
+    </a>
+    <a href="images/plan4.jpg" title="plan4" data-gallery>
+        <img src="images/plan4.jpg" alt="plan4" height="75" width="75">
+    </a>
+    <a href="images/westBeach.jpg" title="westBeach" data-gallery>
+        <img src="images/westBeach.jpg" alt="westBeach" height="75" width="75">
+    </a>
+</div>
+    <br/>
+</div>
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="gallery/js/bootstrap-image-gallery.js"></script>
+<script src="gallery/js/demo.js"></script>

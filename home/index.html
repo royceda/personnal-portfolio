@@ -1,0 +1,66 @@
+
+
+              <!-- Header -->
+              <a name="about"></a>
+              <div id="about"></div>
+
+              <!-- Page Content -->
+              <a  name="education"></a>
+              <div id="education"></div>
+
+
+              <a  name="services"></a>
+              <div id="services"></div>
+
+
+              <a  name="contact"></a>
+              <div id="contact"></div>
+
+
+              <!-- Footer -->
+              <div id="footer"></div>
+</div>
+</div>
+      <!-- jQuery -->
+      <script src="js/jquery.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/import.js"></script>
+      <script src="js/script.js"></script>
+      <script src="js/angular-1.5.8.js"></script>
+      <script src="js/angular-route.js"></script>
+      <script src="js/angular-sanitize.js"></script>
+      <script src="js/angular-animate.js"></script>
+
+
+      <script src="js/ui-bootstrap-tpls-2.1.2.min.js"></script>
+      <script src="js/app.js"></script>
+
+      <script>
+      var link = document.querySelector('link[rel=imports]');
+    //  var imported = content.query.Selector('.hello');
+  //    document.body.appendChild(imported.cloneNode(true));
+      </script>
+
+      <script>
+      $(document).ready(function(){
+          $('.dropdown-toggle').dropdown()
+      });
+      </script>
+
+
+      <script>
+      var clicked = false;
+      $('#navbarDis').click(function() {
+          if(clicked === false) {
+              $(this).addClass('ui-disabled');
+              clicked = true;
+              alert('Button is now disabled');
+          }
+      });
+
+      $('#navbarEn').click(function() {
+          $('#myButton').removeClass('ui-disabled');
+          clicked = false;
+      });
+      </script>
