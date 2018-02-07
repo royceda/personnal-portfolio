@@ -1,0 +1,18 @@
+1.a Il y 2 processeurs numeroté de 0 à 1.
+Dans le dossier /proc on trouve des fichiers numéroté qui contiennent les stats des processus en cours.
+/proc/self contient des fichiers tel que stack qui contient les adresses de la pile.
+
+C'est un pseudo file System.
+
+
+
+1.b  Colonne PID, user, PR (priority), NI(nice values), VIRT(Virtual memory), SHR(shared memory), RES(), SHR(), S(), %CPU, %mem
+
+1.c  L'ordonnanceur vas essayer d'equilibré les processeur
+
+
+2.a quand on en lance 1 il prend 100% d'un processeur environ. Mais plusieurs utilise les deux 
+processeur a tour de role
+
+2.b
+

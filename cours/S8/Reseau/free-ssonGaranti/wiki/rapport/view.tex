@@ -1,0 +1,46 @@
+\section{Partie Affichage}
+Concernant l'affichage en lui-même, il a fallu découper cet affichage en plusieurs fichiers afin d'obtenir de clair. Les fichiers sont les suivants :
+\begin{itemize}
+\item{\textbf{Entity.java :} Qui comporte toputes les informations nécessaires à la description d'un poisson}
+\item{\textbf{Fish.java : }Qui se charge de déssiner les poissons sur l'aquarium grâce aux informations de la classe précédente}
+\item{\textbf{Aquarium.java : }Qui se charge de peindre l'aquarium et d'y placer les différents poissons décrits par la classe précédente}
+\item{\textbf{View.java : }Qui se charge de gérer l'affichage dans son ensemble et de le rafraîchir}
+\end{itemize}
+Nous allons vous présenter un peu plus en détails ces différentes classes.
+\subsection{Le modèle Poisson}
+Chaque poisson possède les informations suivantes :
+\begin{itemize}
+\item{Des coordonnées x et y, qui correspondent à la position d'un poisson en pixels sur l'aquarium}
+\item{Un nom, qui correspond à celui que lui donne l'utilisateur lors de l'ajout de celui-ci}
+\item{Un type, qui permet de charger l'image correspondante lors de l'affichage si elle existe sinon une image par défaut}
+\item{Des entiers représentant la longueur et la largeur en pixels du carré d'affichage de ce poisson qui sont rentrés par l'utilisateur lors de son ajout}
+\end{itemize}
+Ainsi grâce à ces informations contenues dans la classe \textit{Entity.java}, nous sommes capables de décrire entièrement un poisson de manière statique.
+
+
+\subsection{Dessin d'un poisson}
+Le dessinage d'un poisson se fait depuis la classe \textit{Fish.java} grâce aux informations receuillies de la classe \textit{Entity.java}. Cette classe est censée dessiner un composant sur l'aquarium et possède donc un lien "est-un" avec la classe \textit{JComponent}. Chaque dessin de poisson se doit d'être fidèle à la représentation attendue et possède ainsi les attributs suivants :
+\begin{itemize}
+\item{Des coordonnées x et y afin de l'afficher correctement sur l'aquarium}
+\item{Un poissonn afin de pouvoir mettre à jour sa position sur l'écran}
+\item{Une image, qui correspond à l'attribut type de la classe \textit{Entity.java}}
+
+\end{itemize}
+
+Le poisson peut ainsi être dessiné avec les bonnes caractéristiques tout en sachant si ce dernier a été lancé ou non.
+
+\subsection{Dessin de l'aquarium}
+
+Chaque aquarium quant-à lui, se charge de s'afficher et donc "est-un" \textit{JPanel}. Il se doit également de "coller" tous les dessins de poissons qui se trouvent dans cet auqarium.
+\newline Ainsi un aquarium possèdera les attributs suivants :
+\begin{itemize}
+\item{Deux entiers correspondant à la taille de l'aquarium en pixels}
+\item{Une couleur}
+\item{Une liste de dessins de poissons}
+\end{itemize}
+
+Cette classe se charge en autre d'ajouter, supprimer les dessins de poissons de sa liste mais aussi de mettre à jour sa liste de poissons lors d'un rafraîchissement.
+
+\subsection{Affichage global}
+
+Enfin l'affichage de l'aquarium est géré depuis la classe \textit{View.java} qui se charge d'instancier un aquarium et de passer les ordres d'ajout, de suppression et de lancement d'un poisson à l'aquarium.

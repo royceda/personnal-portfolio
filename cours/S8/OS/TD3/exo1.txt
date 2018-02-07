@@ -1,0 +1,12 @@
+1
+
+a) On a [heap], [vdso], [stack]
+La pile et le tas sont placés en opposition dans la memoire avec le tas en haut et pile en bas.
+Le tas sert à stocker des allocations dynamiques et la pile celles qui sont statiques.
+
+
+b) La memoire du noyau est situer dans la partie vdso. Nemamoins tout est en lecture seul dans l'espace utilisateur.
+
+c) Les droits varie d'un processus à un aures et sont meme parfois lancés plusiseurs fois avec des droits different.
+
+

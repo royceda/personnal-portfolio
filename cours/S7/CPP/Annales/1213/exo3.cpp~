@@ -1,0 +1,46 @@
+#include <cstdio >
+using namespace std;
+class A{
+  void m( int i){ printf ("A: :m( int )nn");}
+};
+
+struct B: public A{
+  void m( char c){ printf ("B: :m( char )nn");}
+  virtual ~B(){ printf ("B: : ~B()nn");}
+  virtual void f(int i){ printf ("B: : f ( int )nn");}
+  virtual B&g(){ printf ("B: : g()nn"); return * this ;}
+};
+
+class C: public virtual B{
+public :
+  //virtual A&g()f return thi s ;g // 1.
+  virtual void f(int i){ printf ("C: : f ( int )nn");}
+  virtual void m(int ){ printf ("C: :m( int )nn");}
+};
+
+class D: public C, public virtual B{
+public :
+  ~D (){}
+  using C::f; // 2.
+  virtual D&g(){ printf ("D: : g()nn"); return * this ;} // 3.
+  virtual void f( char c){ printf ("D: : f ( char )nn");}
+  virtual void m(int ){ printf ("D: :m( int )nn");}
+};
+
+int main (){
+  D d;
+  A &a(d);
+  A a2(d);
+  B *b=&d;
+  C *c=new D();
+  A &x=*( new D ());
+  
+  d.f (10); // 4.
+  d.f( 'a ' ); // 5.
+  d.g(); // 6.
+  //a .m(10) ; // 7.
+  b->m (20); // 8.
+  c->m (1); // 9.
+  
+  delete c;
+  delete &x; // 10.

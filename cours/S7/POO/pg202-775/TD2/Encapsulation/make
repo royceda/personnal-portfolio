@@ -1,0 +1,1 @@
+javac LancerTests.java && java -ea LancerTests

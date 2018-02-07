@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <errno.h>
+
+
+int main() {
+
+  if(fork() == -1)
+    perror("fork");
+
+
+  return 0;
+}

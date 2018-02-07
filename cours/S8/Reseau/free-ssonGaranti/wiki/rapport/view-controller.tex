@@ -1,0 +1,37 @@
+\section{Partie controleur de la vue}
+
+\subsection{Le prompt client}
+
+\indent Pour ce projet, le client doit pouvoir, comme l'a été mentionné précédemment saisir des commandes au niveau du prompt client.
+Le client a aussi de son côté une interface graphique.
+Il faut donc pouvoir mettre dans un thread à part la saisie de commande afin de ne pas bloquer le tout.
+
+\subsection{Le parsing de commandes saisies}
+
+\indent Le client instancie donc une classe Commande.java qui permet de vérifier que les commandes
+saisies du côté client sont bien les bonnes. Cette classe fait essentiellement du parsing de commandes
+en suivant le cahier des charges du projet. Il faut savoir que les commandes éronées ne sont jamais envoyées au serveur. Seules des commandes
+valides sont envoyées afin de ne pas surcharger inutilement les demandes au serveur.
+
+\subsection{Le traitement des commandes reçues}
+
+\indent Un peu d'une même façon, le client va en même temps instancier une classe CommandReceived.java
+pour pouvoir traiter les commandes reçues. Un parseur de string est utilisé afin de déclencher des actions selon les ordres. On admet
+ici que les commandes reçues sont toujours correctes.\\
+Cette classe possède un attribut view, construit par référence, afin de pouvoir declencher des méthodes de la vue du client, afin d' actualiser
+l'aquarium selon les commandes fournies.
+
+\subsection{Le client}
+
+\indent La classe client est instanciée par un Main. Elle a plusieurs attributs nécessaires à la communication avec le serveur.
+On a donc un attribut socket, un buffer pour lire et envoyer sur le socket, une vue pour instancier un aquarium
+et un fichier de configuration pour lire les information nécessaires à l'établissement de la connexion avec le serveur (port et adresse). \\Nous avons aussi comme nous l'avons dit plus haut, un instance de Command et CommandReceived afin de parser
+et effectuer la gestion des commandes.\\
+De plus nous utilisons un scanner pour récupérer les commandes saisies par l'utilisateur
+dans le prompt client.\\
+Cette classe possède plusieurs threads. En effet, il faut pouvoir ne pas bloquer la console en écoutant sur le serveur. De plus le scan de
+la console est bloquant aussi. Il faut donc l'isoler.\\
+Enfin il y a deux méthodes importantes qui permettent de recevoir sur le socket, et
+aussi de pouvoir envoyer au serveur les commandes voulues : ce sont $send_message$ et $rec_message$.\\
+Le client va donc faire deux actions
+et ce en continu : scanner la console à la recherche d'ordres, et obéir au serveur en écoutant sur le socket.

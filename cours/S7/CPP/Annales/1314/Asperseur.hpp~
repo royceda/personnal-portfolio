@@ -1,0 +1,13 @@
+#ifndef __ASPERSEUR__
+#define __ASPERSEUR__
+
+namespace Arroseur{
+  class Asperseur{
+
+
+  };
+}
+
+
+
+#endif

@@ -1,0 +1,39 @@
+package tec;
+
+class TestpassagerRepos extends TestpassagerAbstrait {
+
+    protected PassagerAbstrait creerPassager(String nom, int destination) {
+	return new PassagerRepos(nom, destination);
+    }
+
+
+    public void testChoixPlaceMontee() {
+	PassagerAbstrait aPassager = creerPassager("Charlie Brown", 7);
+	assert aPassager.nom() == "Charlie Brown": "TestChoixPlaceMontee: echec, nom";  
+
+	FauxBus aAutobusVide = new FauxBus(40, 100);
+	FauxBus aAutoobusAssisComplet = new Fauxbus(40,0);
+
+	aPassager.choixPlaceMontee(aAutobus);
+	assert aAutbusVide.messages.getLast() == "entreDebout": "TestChoixPlaceMontee: echec, getLast(): messages";
+
+	aPassager.choixPlaceMontee(aAutobusAssisComplet);
+	assert aAutbusVide.messages.getLast() == "entreDebout": "TestChoixPlaceMontee: echec, getLast(): messages";
+
+
+	aPassager = creerPassager("Linus Van Pelt", 13);
+	aAutobus = new FauxBs(100, 0);
+	assert aAutobus.messages.size() == 0: "testChoixMontee: echec, getLast(): Sans Place debout";	    }
+    
+
+    public void testChoixChangerPlace() {
+	PassagerAbstrait aPassager = creerPassager("Snoopy", 3);
+	FauxBus aAutobus = new FauxBus(1,100);
+	aPassager.choixPlaceMontee(aAutobus);
+	assert aAutobus.messages.getLast() == "entreDebout" : "testChoixPlaceMontee: echec, getLast 1; messages";
+	aPassager.nouvelArret(aAutobu,2);
+	assert aAutobus.messages.getlast() == "changeAssis": "ChoixChangerPlace: echec, getLast 2; messages";
+    
+    }
+
+}

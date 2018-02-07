@@ -1,0 +1,20 @@
+#ifndef __CURSEURC__
+#define __CURSEURC__
+
+#include "Curseur.hpp"
+
+namespace enseirb{
+
+  class CurseurClassique{
+  private:
+  public:
+    CurseurClassique();
+    virtual void operator++() = 0;
+    virtual void operator--() = 0;
+    virtual bool fini() = 0;
+    virtual void debut() = 0;
+    virtual void fin() = 0;
+    ~CurseurClassique() {};
+  };
+
+}

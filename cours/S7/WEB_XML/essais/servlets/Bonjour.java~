@@ -1,0 +1,28 @@
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class Bonjour extends HttpServlet {
+    
+    private int compte;
+    public void init(ServletConfig config) throws ServletException{
+	compte = 0;
+    }
+
+    public void doPost( HttpServletRequest req, HttpServletResponse res)
+	throws ServletException, IOException {
+	
+	res.setcontentType("text/html"); //type MIME de la reponse
+	PrintWriter out = res.getwriter();
+	String nom = req.getparameter("nom");
+	if (nom == null)
+	    nom ="";
+	compte++;
+	out.println {
+	    "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n"
+		+ "<html>\n"
+		+ "<head><title>Servlet Bonjour</title></head>\n"
+		+ "<body><h1>Bonjour" + nom + "</h1>\n"
+		+ "Appel no: " + compte +"\n"
+		+ "</body></html>"

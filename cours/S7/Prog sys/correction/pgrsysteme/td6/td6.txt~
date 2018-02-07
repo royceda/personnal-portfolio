@@ -1,0 +1,11 @@
+ Crée ou récup ère un identiant de mémoire partagée à l'aide à de
+shmget(2) et ftok(3).
+Pour la création de la clé à l'aide deftok(3), on utilisera le nom d'un chier 
+système (par ex ./etc/bashrc). 
+Pour shmget(2), on utilisera une taille de 4 o ctets et p our le ag, la
+valeurIPC_CREAT | 0644.
+Attache le segment ainsi identié à l'espace virtuel du pro cessus, avec
+shmat(2), comme un tableau d'entiers puis incrémente le premier entier du 
+tableau et l'ache. 
+Détache le segment de l'espace du pro cessus avec shmdt(2) et quitte:
+

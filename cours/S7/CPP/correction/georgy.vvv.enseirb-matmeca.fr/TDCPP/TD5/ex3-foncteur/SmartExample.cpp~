@@ -1,0 +1,47 @@
+#include"SmartPointer.hpp"
+
+#include<cstdio>
+
+void f(int *p){
+  printf("%d\n",*p);
+}
+
+template<class T>
+void freeSimple(T *n){
+  delete n;
+}
+template<class T>
+void freeArray(T *n){
+  delete[] n;
+}
+template<class T>
+class FonctorSimple{
+public:
+  void operator()(T* n){
+    delete n;
+  }
+};
+
+template<class T>
+class FonctorArray{
+public:
+  void operator()(T* n){
+    delete[] n;
+  }
+};
+
+
+
+int main(){
+  using enseirb::SmartPointer;
+  SmartPointer<int, FonctorSimple<int> > p(new int(10));
+  SmartPointer<int, FonctorSimple<int> > q(p);  
+  
+
+  f(p);
+
+  *p=5;
+  f(q);
+
+  SmartPointer<int, FonctorArray<int> > buggy(new int[10]);
+}

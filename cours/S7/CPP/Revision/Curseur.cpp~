@@ -1,0 +1,14 @@
+#include "Curseur.hpp"
+
+namespace enseirb{
+
+  Curseur::Curseur(){
+    _position = 0;
+    _chaine = new Chaine("");
+  }
+
+  char Curseur::operator*() const{
+    return *_chaine[_position];
+  }
+
+}

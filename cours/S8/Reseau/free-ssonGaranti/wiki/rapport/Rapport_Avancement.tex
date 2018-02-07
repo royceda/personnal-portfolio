@@ -1,0 +1,67 @@
+\documentclass[a4paper,11pts]{article}
+
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+
+\begin{document}
+
+\title{Rapport d'avancement: Projet Réseaux}
+\date{Pour le 10 Avril 2015}
+\maketitle
+
+\begin{center}
+  Antoine Pitaud\\
+  Darius Matboo\\
+  Reda Boudjeltia\\
+  Victor Dury\\
+  Yohann Janvier
+
+\end{center}
+\maketitle
+
+\section{Introduction}
+
+%%TODO
+
+\tableofcontents
+\newpage
+\section{Ce que l'on a fait}
+\subsection{Contrôleur - Parseur de commandes}
+\indent Afin de pouvoir réaliser ce projet, nous devons manipuler un graphe. Cette manipulation se fait avec la librairie GraphViz. Ainsi, nous pouvons charger un graphe à partir d'un fichier texte, ajouter une arrête entre deux noeuds, ôter une arête, ou bien ôter un noeud. Nous avons ainsi dû construire un parseur qui puisse lire les commandes $load$, $show$, $add link$, $del link$, $remove$, $save$. \\
+\indent Par conséquent, nous avons utilisé les fonctions de la librairie GraphViz.
+\begin{itemize}
+\item Pour charger le graphe: $g = agread(graph\_file, NULL);$
+\item Pour afficher le graphe: $agwrite(g, stdout);$
+\item Pour ajouter une arête entre deux noeuds: \\$agedge(g, tmp1, tmp2, NULL, TRUE)$, avec tmp1 et tmp2 deux noeuds du graphe, récupérés grâce à une fonction rappatriant le noeud correspondant au Label donné en paramètre. Le paramètre TRUE permet de créer l'arête si elle n'existe pas encore.
+\item Pour ôter une arête entre deux noeuds:\\$agdeledge(g, agedge(g, tmp1, tmp2, NULL, FALSE))$ avec tmp1 et tmp2 comme ci-dessus, et FALSE pour ne pas créer l'arête si elle n'existe pas.
+\item Pour ôter un noeud: $agdelete(g, ntmp)$, avec ntmp le noeud en question.
+\end{itemize}
+\subsection{Serveur Web}
+En ce qui concerne la partie, nous avons dans un premier temps écrit un serveur et un client en C avec l'API socket afin de pinger. Ensuite, nous avons créé un client en java qui sera utilisé dans la suite du projet pour se connecter au serveur et envoyer/recevoir des données. Puis, nous avons introduit l'utilisation de threads qui permet de gérer plusieurs clients en m\^eme temps.
+
+
+
+\subsection{Interface Graphique}
+Concernant l'interface graphique, nous avons défini la fenêtre d'affichage comme une JFrame, l'aquarium comme un JPanel et enfin les poissons comme des JComponent. \\
+Chaque poisson est repéré par une position et un type. Celui-ci est ensuite "collé" sur le JPanel de l'aquarium. Cela se fait depuis l'aquarium directement qui possède un attribut de type "LinkedList<Fish>" et l'aquarium se charge de tous les peindre selon leur position. \\
+Le rafraîchissement quant à lui se fait en recalculant la position des poissons qui sont ensuite repeints sur l'aquarium.
+\subsection{Prompt client}
+Le lancement de l'interface graphique est multithreadée, ce qui permet la récupération des commandes client dans la console. \\
+Pour l'instant la commande récupère ce qui est passé en paramètre dans la console et ne se contente que de les réafficher.\\
+Enfin les logs ont été déplacés dans un fichier test.txt et non dans la console.
+\section{Ce qu'il reste à faire}
+
+\subsection{Serveur Web}
+
+Il ne manque que les liens entre les serveurs et création du graphe à implémenter.
+
+\subsection{Interface Graphique}
+
+L'affichage est fait, il doit juste répondre au serveur en cas d'activité au niveau poisson.
+
+\subsection{Prompt client}
+
+Du c\^oté du client il faut pouvoir parser les commandes entrées dans le prompt, et ensuite les transférer au serveur via une ouverture de socket, afin qu'il réponde en fonction.
+
+\end{document}

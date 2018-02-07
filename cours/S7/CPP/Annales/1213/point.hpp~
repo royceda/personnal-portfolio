@@ -1,0 +1,21 @@
+#ifndef __POINT__
+#define __POINT__
+
+
+namespace geo{
+  class Point{
+  private:
+    int x;
+    int y;
+  public:
+    Point(int, int);
+    Point operator+ (const Point) const;
+    int operator[] (int) const;
+    ~Point(){};
+  };
+}
+
+
+
+#endif
+

@@ -1,0 +1,7 @@
+Liste des triggers proposé
+
+
+T1: On commmande que si le produit est dispo en taille et en quantite
+T2: on commande donc on decremente la quantité dispo
+T3: on expedit que si la commande est confirmer
+T4: un membre donne son avis que si il  a deja commander le produit

@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+.botto{
+	height:200px;
+	width:100%;
+}
+#bottom{
+  background-color:black;
+  color:white;
+  text-align:center;
+  bottom:0;
+  position:absolute;
+  width:100%;
+  
+}
+#bottom a{
+  display:inline-block;
+}
+#bottom .copyright {
+  display:inline-block;
+  margin-left:8%;
+  position:relative;
+}
+#bottom *{
+  vertical-align:middle;
+}
+#bottom .copyright *{
+  vertical-align: middle;
+  display: inline-block;
+}
+#bottom .copyright .copy{
+  float:left;
+  font-size:3em;
+}
+#bottom .copyright .names{
+  float:right;
+  margin-left:10px;
+  text-align:initial;
+  font-size:1.2em;
+}
+
+#bottom .copyright .names *{
+  display:block;
+}
+body{
+  margin:0;
+  position:relative;
+  padding-bottom:100px;
+}

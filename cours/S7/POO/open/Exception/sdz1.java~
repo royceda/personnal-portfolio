@@ -1,0 +1,17 @@
+import ex.NombreHabitantException;
+
+public class sdz1{
+    
+    public static void main(String[] args){
+
+	try{
+	Ville da = new Ville("LH", -12, "FR");
+	}
+	catch(NombreHabitantException e){
+	    System.out.println("problems:  "+cde);
+	    }
+	finally{
+	    System.out.println("on test.....");
+	}
+    }
+}

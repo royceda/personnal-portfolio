@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+#include "Chaine.hpp"
+
+void annexe(Chaine s) {}
+
+int main() {
+  Chaine chaine("Une petite");
+
+  annexe(chaine);
+}

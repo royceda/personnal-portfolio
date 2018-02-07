@@ -1,0 +1,25 @@
+<!doctype html> 
+<html>
+  <head>
+  </head>
+
+  <body>
+    
+    
+    
+    
+    <table>
+      <tr>
+	<td> Nom <INPUT type="text" size="x" maxlength="m" name="label1" value"texte"> </td>
+	<td> Prenom <input> </td>
+      </tr>
+      <tr>
+	<td> Mail <INPUT type="text" size="x" maxlength="m" name="label1" value"texte"> </td>
+      </tr>
+      <tr>
+	<td> telephone <INPUT type="text" size="x" maxlength="m" name="label1" value"texte"> </td>
+      </tr>
+    </table>
+    
+  </body>
+</html>

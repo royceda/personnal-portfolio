@@ -1,0 +1,13 @@
+class coupe extends voiture
+{
+    public coupe()
+    {
+	couleur = "noir";
+    }
+
+    public void vroum()
+    {
+	System.our.println(couleur);
+    }
+
+}

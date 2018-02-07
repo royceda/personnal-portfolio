@@ -1,0 +1,12 @@
+
+
+
+typedef struct node_s {
+  char kind; // kind of operation, or leaf
+  struct node_s *left, *right; // NULL if leaf
+  union {
+    int i;
+    float f;
+    char *id;
+  } leaf;
+} node_t;

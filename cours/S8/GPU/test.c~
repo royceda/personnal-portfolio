@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+
+
+int main(){
+
+  //  omp_set_num_threads(x);
+
+#pragma omp parallel num_threads(3)
+  {
+    printf("bonjour: %d\n", omp_get_thread_num());
+  }
+
+  printf("au revoir\n");
+
+  return 0;
+}

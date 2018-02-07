@@ -1,0 +1,25 @@
+class Lady {
+	public void laRoseDeversailles() {
+		this.genre();
+		}
+		
+		protected void genre() {
+			System.out.println("Marquise");
+			}
+	}
+	
+	class Oscar extends Lady {
+		protected void genre() {
+			System.out.println("Capitaine");
+			}
+		}
+		
+	class LadyOscar {
+		private static void affiche(Lady l) {
+			l.laRoseDeVersailles();
+			}
+			
+			public static void main (String[] args) {
+				affiche(new Oscar());
+				}
+			}

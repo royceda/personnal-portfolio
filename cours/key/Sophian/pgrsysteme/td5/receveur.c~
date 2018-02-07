@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/mman.h>
+
+void myhandler(int signum){
+  fprintf(stderr, "%d : i received the singal %d \n", getpid(), signum);
+}
+
+int main(int argc, char *argv[])
+{ 
+
+  char *addr;
+  int fd;
+  struct stat sb;
+  off_t offset, pa_offset;
+  size_t length;
+  ssize_t s;
+
+
+  mmap(void *addr, size_t length, int prot, int flags,
+                  int fd, off_t offset);
+
+
+  struct sigaction my_action, old_action;
+  printf(" pid %u \n ", getpid());
+
+
+  my_action.sa_handler = myhandler;
+  sigemptyset(&my_action.sa_mask);
+  my_action.sa_flags = 0;
+
+  //sigaction( SIGUSR1, myhandler);
+  sigaction(SIGUSR1, &my_action, &old_action);
+  pause();
+  
+  //sigaction( SIGUSR1, SIG_DFL);
+  sigaction( SIGUSR1, &old_action, NULL);
+  return EXIT_SUCCESS;
+
+
+
+}

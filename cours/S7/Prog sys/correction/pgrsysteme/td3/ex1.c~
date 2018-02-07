@@ -1,0 +1,12 @@
+printf()
+
+ fopen()
+ fclose()
+ fread()
+ open()
+ close()
+ lseek()
+ rewind()
+ write()
+exit()
+ _exit()

@@ -1,0 +1,1 @@
+javac -d build/ src/* && javac -d build/ -cp build/ recette/Simple.java

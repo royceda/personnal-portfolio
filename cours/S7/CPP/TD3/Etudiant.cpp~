@@ -1,0 +1,42 @@
+#include "Etudiant.hpp"
+
+
+
+namespace enseirb {
+
+
+  Etudiant::Etudiant(const Chaine & )
+  
+  
+  Etudiant(const Chaine& nom, const Chaine& filiere, const Chaine & enseignement);
+  {
+
+
+
+  }  
+
+  const Chaine& filiere() const {
+
+
+
+  }
+ 
+  const Chaine& enseignement() const{
+
+
+  }
+
+
+  void setEnseignement(const Chaine & e) {
+
+
+
+  }
+  const Chaine& nom() const;
+
+
+
+
+
+
+}

@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <unistd.h>
+
+#define CHAINE1 "a"
+#define CHAINE2 "b \n"
+
+int main (int argc, char** argv) 
+{
+  print(stdout,"remy est ");
+  fork();
+  print(stdout,"un connard\n");
+  return EXIT_SUCCESS;
+}

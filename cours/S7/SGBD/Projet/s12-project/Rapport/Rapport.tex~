@@ -1,0 +1,190 @@
+\documentclass[11pt]{report}
+
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+
+\title{\LARGE Projet: EDT de transport pour \\ l'entreprise Envie 2E au Havre }
+\author{Boudjeltia Reda }
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.35]{enseirb.jpg}
+  \includegraphics[scale=0.35]{envie2E.jpg}
+  \label{fig:enseirb}
+\end{figure}
+
+
+
+%Corps du document :
+
+\begin{document}
+    \maketitle
+   
+    \tableofcontents
+
+
+\chapter*{Introduction}
+
+   Durant ce stage decouverte de l'entreprise, la mission principale fut de concevoir une application pouvant gérer les emploies du temps des camions de l'entreprise Envie 2E située au Havre. 
+Arrivé dans l'entreprise le premier jour, on remarque rapidement  que les emploies du temps des commandes des camions sont sur papier avec des événements barrés, ce qui n'est plus très lisible à partir du milieu de la semaine. Par conséquent, l'utilisation d'un outil informatique paraissait plus confortable pour l'activité de transport de l'entreprise que ça soit pour l'organisation mais aussi pour le confort des donneurs d'ordres. 
+    
+      
+\chapter{Présentation de l'entreprise}
+
+Depuis 1999, Envie 2E Le Havre associe une activité en faveur de l’environnement à un projet d’insertion professionnelle . Les salariés récupèrent et recyclent des déchets d’équipements électriques et électroniques. Formés et encadrés par leurs prédesseurs. Ils collectent les machines usagées, les démantèlent et en trient les composants qui rejoindront une filière de recyclage. Un suivi individuel permet également de régler des problèmes personnels et de préparer un projet professionnel.En générale l'entreprise pousse leurs salarié à devenir le plus polyvalent possible en les formant par exemple au transport poids en plus du démentelement. Ainsi, La majorité des salariés trouvent un emploi stable en quittant Envie 2E Le Havre.\\
+De plus, depuis le prinptemps 2014, l'entreprise s'est ouverte aux activités de transport de fret régionale, ce qui permet d'exploiter pleinement les trois camions pleinement, de faire rentrer de
+s plus values supplémentaire et surtout d'offrir des expériences professionnels dans le transports tel que la messagerie aux employés.
+ 
+     
+
+
+\chapter{Pr\'esentation du probl\`eme}
+   
+    \section{Objectifs}
+ 
+    Le premier but de cette mission a été de pouvoir entrer des emploies du temps pouvant gérer des informations spécifique, du fait de la présence d'informations spécifique. De ce fait, l'application devait prendre en compte les caractéristiques de chaque camion et de tenir compte de leur chargement durant chaque journée afin de pouvoir connaitre la possibilité de chargement et du type de commande. De plus, il a était nécessaire de consevoir une interface simple et instinctif pour que n'importe qui puissent utiliser le programme.
+
+    \section{Situation initiale et contraintes}
+  
+Tout d'abord, le language de programmation et la modélisation du problème fut libre. Néamoins, au départ je n'avait très peu de connaissance en création d'interface interactive, et il fallait donc trouver une solution assez rapidement. Ainsi, le choix du langage fut le C et pour l'interface GTK+ 3.0 a été utilisé. \\
+Ensuite, l'entreprise m'a donné accès à toutes les données que je pouvait avoir besoin tel que les plannings ( papier) des camions ou leurs fiches techniques. 
+   
+   
+\chapter{Traitement du projet} 
+  
+   \section{Mod\'elisation}
+     
+   A partir des premiers besoins, nous avons pu esquisser le traitement des données. Ainsi, les deux types de données importantes sont les camions et les évènements. Donc les données à sauvegarder sont ces dernières. Puis, au niveau du traitement pour qu'elles soient bien traitées par le programme, il suffit de les stocker dans des calendriers qui sont propres à chaque camions.     
+
+       \subsection{La structure events}
+
+
+\begin{figure}
+\centering
+  \includegraphics[scale=0.8]{event.png}
+  \label{fig:event}
+\end{figure}
+
+La structure events est celle qui représente les transports à éffectuer. La structure se compose de la manière suivante.
+\begin{itemize}
+  \item nom du client
+    \item structure de besoins
+      \begin{itemize}  
+      \item poids demandé
+      \item mètre planché demandé
+      \item prix de la commande
+      \end{itemize}
+    \item date de début
+    \item date de fin
+\end{itemize}
+
+Les caractéristiques ont été posés dans le but de faire évoluer l'application dans un futur proche afin de créer par exemple un bilan mensuel de rentabilité (pas encore développer), ou de savoir la disponibilité d'un camion (en cours de développement).
+
+\newpage
+
+
+       \subsection{La structure camion}
+%image de la fenetre d'entrée des données
+
+
+La structure camion est celle qui représente les fiches caractéristiques de chaque camions. Elle est construite de la manière suivante.
+\begin{itemize}
+  \item nom du client
+    \item structure de caractéristiques
+      \begin{itemize}  
+      \item poids 
+      \item hauteur
+      \item largeur
+      \item longueur
+      \end{itemize}
+\end{itemize}
+
+
+\begin{figure}
+\left
+  \includegraphics[scale=0.9]{camion.png}
+  \label{fig:camion}
+\end{figure}
+
+\newpage
+De plus, à partir de cette structure nous avons pu développer de nouvelles fonctionalités tels que le calcul de capacité de mètres planchés et la disponibilité d'un camion à un temps t.
+
+
+       \subsection{Les calendriers de camions}
+
+
+Au départ, les calendriers fut implémentés dans la structure de camion. Cependant, pour diverses raisons, ils ont été enlevés est sont devenu des structures que le programme ne sauvegardera pas en memoire. Les calendriers, sont utilisées lors de la consultation des plannings d'un camion et s'efface lorsque nous fermons le programme.\\
+
+La modélisation est la suivante, nous avons une journée qui est une FIFO triée selon la date de début des events. Puis, dans un tableau à trois dimensions on stocke les adresses de ces FIFO. L'affichage s'éffectue en défilant la FIFO jusqu'à la vidé. \\ 
+Par exemple, pour le planing du 21/09/2014, en supposant que Cal est un calendrier, se situe à l'adresse Cal[2014][9][21].
+
+%illustration
+
+\newpage
+    \section{Sauvegarde des donn\'ees}
+    
+    Les données entrées tels que les camions et les évènements sont enregistré dans des fichiers binaires de nom 'event12.bin' ou 'camion3.bin'. Cela explique pourquoi les structures n'ont pas de pointeurssur des structures complexes: pour éviter certains problèmes durant les lecture/ écriture de données.\\
+Puis, il y a deux fichiers de comptages qui contiennent le nombre d'events et de camions, ce choix est une solution pour éviter les problèmes de compléxités.\\
+En ce qui concerne la taille de ces fichiers, un fichier camion pèse 180 ko et un fichier events 68 octets.
+
+
+
+    \section{L'interface Graphique}
+
+    \subsection{Présentation de l'interface}    
+
+L'interface graphique fut concu avec gtk+3.0, outil que je n'avais jamais utilisé mais qui fut le plus approprié à un développement simple, et dans des temps raisonnables sur le laps de temps donné. La majorités des objets manipulés sont les combobox pour les choix de camions et d'events. \\
+L'interface se compose d'une fenetre dit 'Racines' où toutes les actions principales sont visibles, par l'intermédiaire de fenetre 'fils'. 
+
+\begin{figure}
+\left
+  \includegraphics[scale=0.25]{interface.png}
+  \label{fig:interface}
+\end{figure}
+\newpage
+
+
+    \subsection{Les callbacks}
+Les callbacks sont des fonctions utilisées dans l'interface qui ont pour but de créer l'interactivité. Elles utilisent des fonctions de 'bas niveau' pour produire l'interaction entre l'inteface et les objets mient en place dans la memoire. Ainsi, ces fonctions exploitent les widgets, pour faire les saisis lorsqu'on rentre des données ou ferme le rpogramme quand cela est demandé.
+    
+
+
+
+ 
+    \section{Problèmes rencontrés \`a travers le projet}
+
+    La majorités des problèmes rencontrés viennent du fait que la création d'interface fut quelque chose d'inconnu au départ mais surmontable. Néamoins, des problèmes de modélisations ont été rencontré avec des erreurs mémoire. De plus, le principal problème qui demeurre vient de la compilation croisée linux-windows. En effet, il est encore impossible d'utiliser l'application sur un PC Windows.   
+   
+
+
+    \chapter{La vie dans l'entreprise}
+   
+En ce qui concerne la vie dans l'entreprise, l'acceuil fut très bon et l'ambiance fut exellente dès le premier jour, ce qui a facilité l'intégration avec les autres employés. De plus, l'emplacement de travail qui a été utilisé pour la conception de l'application était le bureau des dirigeants, ce qui a fait évolué continuellement les idées de départs et donné de nouvelles pour l'améliorer. Ainsi, il n'était pas rare d'avoir des échange à propos de fonctions avec des employés.\\
+ D'autres part, les responsables m'ont donnés accès à la majeur parti des locaux et de ce que je pouvais avoir besoin pour le développent de l'application, ce qui m'a permis d'enrichir mes connaissances sur d'autres domaines tels que les relations dans l'entreprise ou le fonctionnement du recyclage de dechets ménagés et de la valeurs que ces derniers pouvaient encore avoir. \\
+Ensuite, j'ai pu découvrir le monde du transport et avoir une certaines idée du fonctionnement des transports de 'fret' puisque chaque jour j'assistais à des négociations de transports .\\
+
+  
+
+    
+    
+
+
+
+    \chapter{Conclusion}
+   
+    En conclusion, en ce qui concerne le programme, les fonctions de bases du cahiers des charges fonctionnent parfaitement. Par la suite, certaines fonctions ont été écrites, certaines fonctionnent bien d'autres moins bien. Néamoins, certains bugs sont encore à corriger, mais aucun de ceux répertorié proviennent d'erreurs memoires. Les fonctions de bas niveau, c'est à dire celles qui sont associées directement aux modules, ne produisent pas de fuites memoires lors des allocations mémoire. \\
+Cependant, en partant du principe que chaque application est créer pour évoluer en permanance je me suis engagé à la faire évoluer regulièrement en proposant des mises à jour, malgrè que la version windows ne soit pas encore sorti.\\
+\\Ensuite, le principal problème persistant encore à la fin du stage est l'adaptation de l'application sur windows m\^eme si le problème fut contourné. \\
+Pour finir, ce stage découverte fut une expérience très enrichissante que ce soit d'un point de vue humain que professionnel, cela est principalement du au fait que tout l'ensemble des employés furent à l'écoute de mes questions et on fait en sorte de me mettre dans une exellente atmosphère de travail.
+
+
+    
+   
+\end{document}
+  

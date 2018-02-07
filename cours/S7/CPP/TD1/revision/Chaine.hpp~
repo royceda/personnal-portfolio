@@ -1,0 +1,16 @@
+#include <cstdio>
+
+
+class Chaine {
+  
+private:
+  unsigned int _taille;
+  char * _donnees;
+
+
+public:
+  int taille();
+
+
+
+}

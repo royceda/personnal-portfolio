@@ -1,0 +1,9 @@
+abstract class voiture
+{
+    int cv;
+    int Vmax;
+    String couleur;
+
+
+
+}

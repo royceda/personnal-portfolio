@@ -1,0 +1,21 @@
+#include "SmartPointer.hpp"
+
+#include <cstdio>
+
+void f(int *p){
+  printf("%d\n",*p);
+}
+
+int main(){
+  using enseirb::SmartPointer;
+  SmartPointer<int> p(new int(10));
+  SmartPointer<int> q(p);
+  
+  
+
+  f(p);
+
+  *p=5;
+  f(q);
+return 1;
+}

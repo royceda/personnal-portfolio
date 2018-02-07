@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+
+int main(int argc, char **argv){
+  int tube[2];
+  pipe(tube);
+  pid_t d = fork();
+  if(d == -1)
+    fprintf(stderr,"erreur fork\n");
+  else if(d == 0){
+    execv("programme_fils",NULL);
+  }

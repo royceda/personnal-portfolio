@@ -1,0 +1,1 @@
+javac -d build/ src/*.java && java -ea -cp build/ tec.LancerTests

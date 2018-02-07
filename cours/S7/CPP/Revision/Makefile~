@@ -1,0 +1,23 @@
+test: Programme.o Curseur.o CurseurClassique.o Chaine.o
+	g++ -Wall  Programme.o Curseur.o CurseurClassique.o Chaine.o -o test
+
+Curseur.o: Curseur.cpp
+	g++ -c -Wall Curseur.cpp -o Curseur.o
+
+CurseurClassique.o: CurseurClassique.cpp
+	g++ -c -Wall CurseurClassique.cpp -o CurseurClassique.o
+
+CurseurInverse.o: CurseurInverse.cpp
+	g++ -c -Wall CurseurInverse.cpp -o CurseurInverse.o
+
+CurseurPas.o: CurseurPas.cpp
+	g++ -c -Wall CurseurPas.cpp -o CurseurPas.o
+
+Programme.o: Programme.cpp
+	g++ -c -Wall Programme.cpp -o Programme.o
+
+Chaine.o: Chaine.cpp
+	g++ -c -Wall ./chaine4/Chaine.cpp -o Chaine.o
+
+clean:
+	rm *.o test

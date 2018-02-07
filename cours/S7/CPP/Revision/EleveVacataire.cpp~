@@ -1,0 +1,12 @@
+#include "EleveVacataire.hpp"
+
+
+namespace enseirb{
+
+  EleveVacataire::EleveVacataire(Chaine &nom, Chaine &enseignement, Chaine &filiere, int time):
+    Personne(nom), Etudiant(nom, enseignement, filiere), Enseignant(nom,time){}
+
+
+
+
+}

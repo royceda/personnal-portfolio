@@ -1,0 +1,20 @@
+package tec;
+
+class Nerveux extends passagerAbstrait{
+        
+    Sporif(String nom, int destination, Caractere carac){
+	super(nom, destination, carac);
+    }
+
+
+    choixChangerplace(Bus b, int arret){
+	if(b.aPlaceDebout)
+	    b.demanderPlaceDebout(this);
+	if(b.aPlaceAssise)
+	    b.demanderPaceAssise(this);
+    }    
+}	
+
+
+
+

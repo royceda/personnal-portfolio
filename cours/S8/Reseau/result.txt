@@ -1,0 +1,20 @@
+
+; <<>> DiG 9.9.5-3ubuntu0.1-Ubuntu <<>> -x 147.210.18.0
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 33547
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; MBZ: 0005 , udp: 4096
+;; QUESTION SECTION:
+;0.18.210.147.in-addr.arpa.	IN	PTR
+
+;; AUTHORITY SECTION:
+18.210.147.in-addr.arpa. 5	IN	SOA	neouvielle.enseirb-matmeca.fr. pallard.neouvielle.enseirb.fr. 2015010913 21600 3600 3600000 172800
+
+;; Query time: 5 msec
+;; SERVER: 127.0.1.1#53(127.0.1.1)
+;; WHEN: Wed Jan 14 15:27:47 CET 2015
+;; MSG SIZE  rcvd: 146
+

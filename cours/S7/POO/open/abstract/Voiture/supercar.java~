@@ -1,0 +1,7 @@
+public interface supercar
+{
+    public void vroumVroum()
+    {
+	System.out.println("je suis un supercar");
+    }
+}

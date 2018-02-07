@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding=UTF-8?>
+<xs:element name="task">
+<xs:simpleType>
+	<xs:restriction id="xs:integer"></xs:restriction>
+	<xs:restriction Deadline="xs:String"></xs:restriction>
+</xs:element

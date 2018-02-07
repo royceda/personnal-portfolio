@@ -1,0 +1,14 @@
+#include <sys/time.h>
+#include <stdlib.h>
+
+
+int main(){
+
+	unsigned long microsec;
+	struct timeval tv1, tv2;
+	gettimeofday(&tv1, NULL);
+	microsec = (tv2.tv_sec-tv1.tv_sec)*1000000+(tv2.tv_usec-tv_usec);
+
+
+	return 0;
+}

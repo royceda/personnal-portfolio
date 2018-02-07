@@ -1,0 +1,161 @@
+\documentclass[11pt]{report}
+
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{landscape}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+
+\title{\LARGE Projet: E-Commerce }
+\author{Boudjeltia Reda, Adotevi Lionel, Sabir Reda }
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[scale=0.35]{enseirb.jpg}
+  \label{fig:enseirb}
+  \end{center}
+\end{figure}
+
+
+
+%Corps du document :
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+\chapter*{Introduction}
+
+Le projet se situe dans le cadre d'un apprentissage du cour de SGBD, à l'issue de la formation du semestre 7, des sujets de projets on été proposé. Parmis ces sujets, on y trouve le covoiturage, le sport et le e-commerce. Notre choix s'est orienté vers le e-commerce, puisque c'est un domaine très dynamique de nos jours. Durant presque deux mois nous avons conçu une base de données d'un site de E-commerce de v\^etement gérant des produits, des promos, des statistiques etc...\\
+Le choix du gestionnaire de bases de données (SGBD) a été libre de choix, ainsi nous avons choisit d'utiliser MySQL avec ses avantages et inconvénients.
+
+
+\chapter{Contexte du projet et besoins}
+
+Pour la réalisaiton du projet, il fut nécessaire de choisir un SGBD, et l'interface de notre systeme (site web, application). Nous avons donc choisit de se situer dans le contexte de la création d'un nouveau site web de ventes de v\^etements en ligne. Par conséquant, nous sommes parti de zéro particulièrement au niveau du site web puisque le sujet nous impose aussi de partir de zéro pour la BD (base de données).
+
+
+\begin{figure}
+\rotatebox{90}{
+  \includegraphics[scale=0.35]{acc.jpg}
+  }
+\end{figure}
+
+
+\chapter{Partie Base de donn\'ees}
+
+\section{Mod\'elisation conceptuelle}
+
+Dans cette première étape de conception de notre base de données, nous avions du mettre en place les mécanismes de promotion, de gestion des produits et de livraison. Ainsi, nous avons onze entités parmis lesquelles nous trouvons les entités produit, commande, membre, promo etc..
+Ensuite, on trouve les associations tel que $ordonner$ une commande (membre) ou $figurer$ dans un calogue (produit). 
+
+cf: schema conceptuelle
+\section{Mod\'elisation relationnelle}
+
+Dans cette étape la principale difficultés fut le passage du conceptuelle au relationnelle dans la création des relations et de leurs attribut. Nous avons donc onze relations composée d'une clé primaire, d'attributs propres et de clés étrangères selon les associations présentent sur le schéma conceptuelle. 
+
+\section{R\'ealisation SQL}
+
+\subsection{Les tables, contraintes, et requetes d'essais}
+
+Après avoir fait la réalisation realtionnelle nous avons les tables présente dans notre BD. Néamoins, il nous reste à représenter les contraintes présentent dans le schéma conceptuelle et sachant que des contrainte plus particulières comme la forme des adresses mails, numero de téléphone ou de produits auraient pu \^etre présente dans la BD, nous avons préféré les intégrés dans la parti web. 
+
+\subsection{Les vues}
+
+Le besoin de vues provient du fait que certaines requetes seront appelé systematiquement tels que les meilleur ventes du sites ou les produits les mieux notés...\\
+Ainsi, nous avons édité des vues qui seront utilisée directement dans notre code php sous forme 'SELECT * FROM $views$; '.
+
+\section{Les triggers}
+
+
+
+\subsection{Les besoins}
+Les triggers ont été fait pour répondre à des besoins de conception afin de respecter la logiqueet la cohérence de la BD et de son schéma conceptuelle. Nous avons écrit quatre triggers.
+
+Liste des triggers proposés: \\
+\begin{itemize}
+\item T1: On commmande que si le produit est disponible en taille et en quantité
+\item T2: on commande donc on decremente la quantité disponible
+\item T3: on expedit que si la commande est confirmé
+\item T4: un membre donne son avis que si il a déjà commander le produit
+\end{itemize}
+
+Le premier trigger permet de verifier dans la table disponibilite si le produit est encore disponible en taille et en quantité sinon il affiche l'erreur 'error: Produit indisponible'. \\
+Le second permet de décrémenter la quantité d'un produit d'une taille dans la tables disponibilité. \\Le troisième vérifie avant l'expédition qu'une commande a été confirmé.\\
+Le quatrième vérifie qu'un membre ai déjà commandé le produit afin de pouvoir publier son avis à propos d'un produit. 
+
+\newpage
+
+\subsection{Les erreurs personnalisées}
+
+Du fait que nous utilisons MySQL, il n'est pas possible de créer des messages d'érreur lors d'un cas échéant d'un test dans un trigger. Ainsi, il a fallu trouver une astuce pour contourner le problème. Nous avons créé une relation erreur(id, message) qui est dans notre BD mais qui n'est associées à aucune tables avec dans l'insertion sous MySQL l'attribut message qui est UNIQUE. Par conséquent, lors d'un cas échéant nous éxécutons une requete d'insertion avec un message existant dans la table. Nous declenchons une erreur d'insertion mais avec le message affiché comme sur la figure ci dessous. \\
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[scale=0.9]{error1.png}
+  \label{fig:erreur de triggger}
+  \end{label}
+\end{figure}
+
+ 
+\chapter{Partie conception Web}
+  
+  On a comme interface Web, un site d'achat et de ventes d'habits. Il y a trois grandes sections qu'on a appelé Catégories et qui sont les suivants: Vetements, Chaussures et Accessoires.
+
+   \section{Gestion de l'accueil}
+	Dans cette partie, on a construit une page qui affiche en haut le menu comme dans toutes les pages que l'utilisateur accédera et en plus une photo en mode bannière qui montrera une pub d'un des r\'ecents articles. En dessous, un petit message est affiché à droite et qui montre le nombre d'article ajouté au pannier. En dessous de cela, on affichera les produits les plus récents, donc triés par date, en se limitant à leur désignation (nom), leur prix et leur photo qui les représentent. Cette page limite l'affichage des produits par 18, ainsi en dessous on aura une barre qui permet de naviguer entre les pages. Chaque utilisateur peut voir les détails d'un produit et donc \^etre redirigé vers la page "produit" (voir-ci dessous) et l'ajouter à travers cette page.
+ 
+  \section{Les catégories}
+    Cette partie triera les produits par les trois sections: Vetements, Chaussures et Accessoires. L'utilisateur peut aussi affiner sa recherche par sous séléction en utilisant le menu vertical à gauche. Chaque sous section qu'on accedera aurra une bannière representant la séction. Il y a aussi une possibilité de trier les articles par date, prix, meilleur vente et taille des produits disponibles. \\
+    Les produits sont affichés à droite du menu vertical et ont les m\^emes types d'informations qu'il y a dans index.\\
+    Le nombre de produit est toujours limité à 18 produits avec une barre de navigations entre les pages en bas.\\
+    Les sous-catégories ne sont pas fixes comme les sections mais peuvent \^etre variés et sont mis-à-jour à chaque rechargement de la page.
+   \section{Produit}
+   Cette partie a pour but de permettre à l'utilisateur d'avoir plus d'information sur le produit en affichant une description plus détaillée du produit et des tailles disponibles pour ce dernier. L'utilisateur souhaitant ajouter l'article à son pannier devra choisir une taille et cliquer sur le  bouton "AJOUTER". Si l'utulisateur ne chosit pas une taille, le bouton "AJOUTER" ne marchera pas grace à un code javascript mis en place.
+   Jusqu'à l'instant, l'utilisateur n'est pas obligé de s'identifier pour faire toutes ses actions.
+   \section{Gestion du panier}
+    Après que l'utilisateur ait ajouter ses articles, il pourra les consulter en cliant sur le message qui affiche le nombre d'articles ajoutés (ce message est présent dans toutes les pages évoquées avant). On affichera dans cette page, tout les artcilces ajouter avec la quantité. L'utilisateur pourra modifier la quantité et la confirmer en cliquant sur la touche "Entrer". Ainsi la page se rafraichissera et affichera toutes les produits avec la modification faite. On aurra aussi le prix de chaque produit ajouté, en prenant en compte la quantité, le prix de la livraison et le prix total de la commande. L'utilisateur pourra ainsi confirmer le panier en cliquant sur confirmer.\\
+    Cela fait, l'utilisateur sera invité à se connecter, si ce n'est pas déjà fait, pour que la confirmation soit pris en compte et qu'il puisse passer à l'étape suivante.\\
+    Après que l'utilateur s'identifie, il pourra saisir une adresse de livraison, ou utiliser son adresse. On aurra à la fin, un bouton envoyer pour enregistrer la commande.
+   \section{Connexion et Inscription}
+   L'inscription se limite à un formulaire intéractif qui demande à l'utilisateur de saisir: son nom, son prenom, son mail, son téléphone et son adresse. Il sera aussi invité à saisir deux fois un mot de passe pour qu'il puisse s'identifier. 
+   La connexion se fait en saisissant l'email et le mot de passe enregistré dans la base de données. 
+   \section{Admin}
+   La page admin n'est pas accessible par les pages du client. Il faudra que l'administrateur saisit: URI/rrl/admin/ pour y acceder. Dans cette page, on a trois grandes sections.
+ 
+  \subsection{Statistique}
+  On y trouve 
+  \begin{itemize}
+  \item Le chiffre d'affaire par client, par catalogue et par produit.
+  \item La liste des produits les plus vendus, les moins vendus, les mieux notés etc...
+  \item les clients réalisant les meilleurs chiffres d'affaire.
+  \item Le nombre de commandes passées entre des dates données.
+  \end{itemize}
+  Pour cela nous appellons essentielement des vues déjà présentent dans la BD.
+   \subsection{Ajout}
+   Pour réaliser cette section nous passons par l'intermédiaire d'une page de saisi o\`u nous saissisons les informations pour les insérer dans la BD des clients, des produits etc...
+   \subsection{Modifier et supprimer}
+   Afin d'éffectuer les actions de modification et de suppression nous devons passer par une page qui effactura la requete de modication/suppression dans la parti php. Il est ainsi possible de de modifier ou supprimer tout ce qui a été susdit.
+   
+
+
+\chapter{Remarques et am\'eliorations possibles}
+
+En ce qui concerne la parti web qui est la parti qui fut le moins aboutit du fait que le principale objectif fut d'avoir une BD fonctionnelle, il y a plusieurs modification possible son amélioration. On peut commencer par l'interface qui pourrait \^etre plus attirante et ergonomique.  
+Pour la BD, l'aspect sécurité pourrait \^etre mis en place si le projet devrait se concrétiser réellement. Il reste, néamoins certains petit problème mineurs, mais en générale cela fonctionne correctement.
+
+
+\chapter{Conclusion}
+Pour conclure, ce projet fut notre premier projet utilisant une BD. Ainsi, nous avons été confronté aux problèmes liées à la conception et à la mise en place d'une BD tel que les problèmes de cohérences lors d'une transtion sur un achat par exemple. Cela nous a permis de rattacher la partie programme à la partie données et de comprendre plus précisément les bases de données. Encore, une fois le travail d'équipe a été précieux dans la résolution de problèmes et dans l'avancement général du projet. 
+
+
+
+\end{document}
+

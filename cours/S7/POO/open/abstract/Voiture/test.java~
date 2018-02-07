@@ -1,0 +1,8 @@
+public class test
+{
+    public static main(String[] args)
+    {
+	voiture jaguar = new berline();
+	jaguar.vroum();
+    }
+}

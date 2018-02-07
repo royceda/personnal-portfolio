@@ -1,0 +1,43 @@
+puts "helooo"
+puts "aaaaaaaaaa"
+puts "taaaa"
+
+
+#ceci est un com 
+
+
+puts "calculons"
+puts 13.0/7.0
+puts 4*5
+puts "conca"+"tenation"
+
+#conversion
+
+puts "2".to_i + 3
+puts "on a "+3.to_s
+
+#variable
+
+royce = 10
+puts "royce"+ royce.to_s
+
+
+saisie = gets
+#ecrit un truc coucou
+puts saisie.chomp
+saisie2 = gets
+#traaaaa
+
+puts "tu a saisie #{saisie2}"
+
+
+#tableau
+
+tab = ["Charlie", 7, "Brown"]
+
+puts "ton tab est "+ tab.to_s
+
+tab.pop
+tab.push('y','r',76)
+
+puts "#{tab}"

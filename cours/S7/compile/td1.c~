@@ -1,0 +1,133 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+
+int is_char(char c)
+{
+  if( isdigit(c) || c == '+' || c == '*')
+    return 0;
+  else
+    return 1;
+}
+
+
+
+char read_float (char c)
+{
+  char buffer[1024];
+  buffer[0] = c;
+  int k = 1;
+  c = getchar();
+
+  while(c != EOF && k <1024 && isdigit(c))
+    {
+      buffer[k++] = c;
+      c = getchar();
+    }
+
+
+  if( c != '.' && k < 1024)
+    {
+      fprintf(stderr, "ERREUR\n");
+      exit(2);
+    }
+  else
+    {
+      buffer[k++] = c;
+      c = getchar();
+    }
+
+  while(c != EOF && k <1024 && isdigit(c))
+    {
+      buffer[k++] = c;
+      c = getchar();
+    }
+
+
+  buffer[k] = '\0';
+  printf("TOKEN_FLOAT %s \n", buffer);
+  return c;
+}
+
+
+
+char read_var (char c)
+{
+  char buffer[1024];
+  buffer[0] = c;
+  int k = 1;
+  c = getchar();
+
+
+  while(c != EOF && k <1024 && is_char(c) )
+    {
+      buffer[k++] = c;
+      c = getchar();
+    }
+
+
+
+  buffer[k++] = c;
+  c = getchar();
+  
+
+  buffer[k] = '\0';
+  printf("TOKEN_VARIABLE %s \n", buffer);
+  return c;
+}
+
+
+
+
+char read_plus(char c)
+{
+}
+
+
+char read_mul(char c)
+{
+  printf("TOKEN_MUL \n");
+  c = getchar();
+  return c;
+}
+
+
+
+
+
+int main()
+{
+  char c = getchar();
+ 
+  while(c != EOF)
+    {
+      if( isdigit(c))
+	{
+	  read_float(c);
+	}
+      else 
+	if ( !(isdigit(c)) || c != '+' || c != '*')
+	  {
+	    read_var(c);
+	    exit(2);
+	  }
+	else
+	  {
+	    if (c == '+') 
+	      c = read_plus(c);
+	    if( c =='*')
+	      c = read_mul(c);
+	  }
+    }
+
+
+
+      printf("%c \n", c);
+      c = getchar();
+      exit(2);
+    
+
+  return 0;
+}

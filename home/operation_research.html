@@ -1,0 +1,110 @@
+
+<div class="col-lg-8 col-lg-offset-2">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Operation Research</h1>
+      <p>Operations research is a discipline that deals with the application of advanced analytical methods to help make better decisions. It is often considered to be a sub-field of mathematics. The terms management science and decision science are sometimes used as synonyms.  As for me it's the bridge between Mathematics and computer science.</p>
+      <p><a class="btn btn-primary btn-lg" href="http://www.mit.edu/~orc/" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <h2>Knapsack</h2>
+    <p>The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.</p>
+    <p><div lang="latex">
+      z = \sum\limits_{i=1}^n p_j x_j \\
+      \text{subject to }\\
+        \sum\limits_{i=1}^n w_j x_j \leq W \\
+        x_i \in {0,1} \forall i=1, ..., n
+    </div></p>
+    <button type="button" class="btn btn-primary">View Details</button>
+  </div>
+
+
+  <div class="col-md-6">
+    <h2>Bin Packing</h2>
+    <p>In the bin packing problem, objects of different volumes must be packed into a finite number of bins or containers each of volume V in a way that minimizes the number of bins used. In computational complexity theory, it is a combinatorial NP-hard problem.
+      There are many variations of this problem, such as 2D packing, linear packing, packing by weight, packing by cost, and so on. They have many applications, such as filling up containers, loading trucks with weight capacity constraints, creating file backups in media and technology mapping in Field-programmable gate array semiconductor chip design.</p>
+      <p><div lang="latex">
+        min \sum\limits_{j\in J} y_j \\
+        \text{subject to}\\
+        \sum\limits_{i\in I} x_{ij} s_i \leq C_j y_j \text{ }\forall j \in J \\
+        \sum\limits_{j \in J} x_{ij} = 1 \text{ } \forall i \in I \\
+        x_{ij} \in \{0, 1\} \text{ } \forall i \in I, j \in J \\
+        y_j \in \{0, 1\} \text{ } \forall j \in J
+      </div></p>
+      <button type="button" class="btn btn-primary">View Details</button>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Cutting Stock</h2>
+      <p>In operations research, the cutting-stock problem is the problem of cutting standard-sized pieces of stock material, such as paper rolls or sheet metal, into pieces of specified sizes while minimizing material wasted. It is an optimization problem in mathematics that arises from applications in industry. In terms of computational complexity, the problem is an NP-complete problem reducible to the knapsack problem. </p>
+      <p><div lang="latex">
+        min \sum\limits_{i \in I} c_i x_i \\
+        \text{subject to}\\
+        \sum\limits_{i \in I} a_{ij} x_i \geq q_j \text{ } \forall j \in J\\
+        \sum\limits_{j \in J} a_{ij} w_j \leq L_i \text{ } \forall i \in I\\
+        x_i \in \mathbb{N}^+
+
+      </div></p>
+      <button type="button" class="btn btn-primary">View Details</button>
+    </div>
+
+  <div class="col-md-6">
+    <h2>Travelling Salesman</h2>
+    <p>The travelling salesman problem (TSP) asks the following question: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? It is an NP-hard problem in combinatorial optimization, important in operations research and theoretical computer science. TSP is a special case of the travelling purchaser problem and the Vehicle routing problem. </p>
+    <p><div lang="latex">
+      min \sum\limits_{i \in I} c_{ij} x_{ij} \\
+      \text{subject to}\\
+      \sum\limits_{i \in I} x_{ij} = 1 \text{ } \forall j \in I\\
+      \sum\limits_{j \in I} x_{ij} = 1 \text{ } \forall i \in I\\
+
+      \sum\limits_{i \in U} \sum\limits_{j \in V} x_{ij} \geq 1 \text{ } \forall U \subseteq I \text{ and } 1\leq |U| \leq |I|-1\\
+      x_{ij} \in {0,1} \text{ } \forall i,j \in IxI
+    </div></p>
+    <button type="button" class="btn btn-primary">View Details</button>
+  </div>
+
+  <div class="col-md-6">
+    <h2>RCPSP (flow model)</h2>
+    <p>Informally, a resource-constrained project scheduling problem (RCPSP) considers
+      resources of limited availability and activities of known durations and resource
+      requests, linked by precedence relations. The problem consists of finding a schedule
+      of minimal duration by assigning a start time to each activity such that the precedence
+      relations and the resource availabilities are respected</p>
+      <p><div lang="latex">
+        min S_{n+1}\\
+        \text{subject to}\\
+        x_{ij} = 1 \text{ } \forall (i, j) \in E\\
+        x_{ij} + x_{ji} \leq 1 \text{ } \forall (i, j) \in V^2, i\leq j \\
+        x_{ik} \geq x_{ij} + x_{jk} -1 \forall (i, j, k) \in v^3\\
+        S_j - S_i \geq -\mathbb{M} + (p_i + \mathbb{M}) x_{ij} \text{ } \forall (i, j) \in V^2\\
+        \sum\limits_{j \in V} f_{ij}^k = b_{ik} \text{ } \forall i \in V, \forall k \in R\\
+        \sum\limits_{j \in V} f_{ji}^k = b_{ik} \text{ } \forall i \in V, \forall k \in R\\
+          f_{ij}^k \leq min(b_{ik}, b_{jk})x_{ij} \text{ } \forall (i, j) \in V^2, \forall k \in R \\
+          x_{ij} \in \{0, 1\} \text{ } \forall (i, j) \in V^2, i \neq j \\
+          S_i \geq 0 \text{ } i \in V\\
+          f_{ij}^k \geq 0 \text{ } \forall(i, j) \in V^2, \forall k \in R
+        </main>
+      </div></p>
+      <button type="button" class="btn btn-primary">View Details</button>
+    </div>
+
+
+  <div class="col-md-6">
+    <h2>Lot Sizing (ULS)</h2>
+    <p>We have available a forecast of product demand dt over a relevant time horizon t=1,2,...,N (for example we might know how many widgets will be needed each week for the next 52 weeks). There is a setup cost st incurred for each order and there is an inventory holding cost it per item per period (st and it can also vary with time if desired). The problem is how many units xt to order now to minimize the sum of setup cost and inventory cost. Let I denote inventory</p>
+      <p><div lang="latex">
+        min \sum\limits_{t \in T} p_t x_t + h_t s_t + f_t y_t \\
+        \text{subject to}\\
+        s_{t-1} + x_t = d_t + s_t \text{ } \forall t \in T \\
+        x_t \leq \mathbb{M} y_t \text{ } \forall t \in T\\
+        x_t , s_t \geq 0 \text{ } \forall t \in T\\
+        y_t \in \{0,1\} \text{ } \forall t \in T \\
+        \text{with  }\mathbb{M} = d_{t,n} = \sum\limits_{r = t}^n d_t
+      </div></p>
+      <button type="button" class="btn btn-primary">View Details</button>
+    </div>
+  </div>

@@ -1,0 +1,12 @@
+from numpy import *;
+from random import *;
+
+
+def exp-modulaire(a, b, n):
+    c = 0;
+    d = 1;
+    T = array #representation binaire
+    for i in range(k,0):
+        c = 2*c;
+        d = d*d % n;
+        

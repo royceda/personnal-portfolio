@@ -1,0 +1,54 @@
+information a propos de la BD.
+
+Les entités.
+
+Produits:
+	-> Référence
+	-> Désignation
+	-> Descriptif
+	-> Quantité
+	-> Prix
+
+
+Catalogue: contient des produits
+	-> Numéro
+	-> Nom
+	-> Date de MAJ
+	
+Menbre:
+	-> Numero Client
+	-> Nom
+	-> Prenom
+	-> Adresse
+	-> Code Postale
+	-> Mail
+	-> Telephone
+
+Commande:
+	-> Numero de commande
+	-> qté de chaque produit
+	-> date de livraison souhaité
+	-> adresse de livraison
+	
+
+Les Services:
+
+Consultation:
+	-> produits dispos
+	-> la liste des catalogue ou un produits fait partie
+	-> detail d'une commande effectué (idée du bon de commande)
+
+
+Statistiques:
+	-> Chiffre d'affaire
+	-> la liste des produits star, flop etc ...
+	-> les meilleurs clients
+	-> nombre de commandes passé entre le x et le Y (date)
+
+MAJ:
+	-> Ajout, Suppression, Modif d'un catalogue, produit ou client
+	-> les promotions d'un catalogue ou produit 
+	-> Des choses en plus si cela est utile
+	-> ACID
+
+	

@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\usepackage[vlined, lined, linesnumbered, boxruled, french]{algorithm2e}
+%\usepackage{xcolor,amsmath,amssymb}
+%\usepackage[babel=true]{csquotes}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\pagestyle{fancy}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{listings}
+%%%%%%%%%%%%%%%% Lengths %%%%%%%%%%%%%%%%
+\setlength{\textwidth}{15.5cm}
+\setlength{\evensidemargin}{0.5cm}
+\setlength{\oddsidemargin}{0.5cm}
+
+\setlength{\voffset}{-.7in}
+\setlength{\hoffset}{-.1in}
+\setlength{\textheight}{24.7cm}
+
+\renewcommand*\thesection{\arabic{section}}
+%%%%%%%%%%%%%%%% Variables %%%%%%%%%%%%%%%%
+\def\projet{1}
+\def\titre{Projet Réseau}
+\def\groupe{4}
+\def\equipe{Anguille Sous Roche}
+\def\others{Victor Dury, Antoine Pitaud, Reda Boudjeltia, Darius Matboo, Yoann Janvier}
+\newtheorem{preuve}{\textit{Preuve }}
+\begin{document}
+\fancyhfoffset{0cm}{}
+%%%%%%%%%%%%%%%% Header and footer %%%%%%%%%%%%%%%%
+\noindent\begin{minipage}{0.98\textwidth}
+\vskip 0mm
+\noindent
+    \begin{center}    { \begin{tabular}{p{4.5cm}}
+        \centering \bfseries
+                   {\itshape \titre} \\
+
+    \end{tabular}} \\
+    \hfill
+
+    \fbox{\begin{tabular}{l}
+        {~\hfill \bfseries \sffamily Groupe  \groupe\ - \'Equipe \equipe
+          \hfill~} \\[2mm]
+        Codeurs : \others
+    \end{tabular}}
+    \end{center}
+    \vskip 4mm
+
+
+
+
+    \vskip 1mm
+\end{minipage}
+
+\lhead{ Projet Réseau}
+\chead{}
+\rhead{Groupe \groupe \hspace{1mm}- Equipe \equipe}
+
+\lfoot{ENSEIRB-MATMECA}
+\cfoot{}
+\rfoot{Semestre 8 2014-2015}
+
+%%%%%%%%%%%%%%%% Main part %%%%%%%%%%%%%%%%
+%\begin{doublespace}
+\vskip 5cm
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.5]{inp.jpg}
+\end{figure}
+
+\tableofcontents
+
+\newpage
+\include{rapportp1}
+%\section{La commande}
+%\input{commande}
+
+\input{rapportDa}
+\input{view-controller}
+
+\input{view}
+
+\section{Utilisation et réalisation}
+
+
+
+\input{ur}
+
+
+
+
+\newpage
+\input{conclusion}
+%\end{doublespace}
+%\input{besoinsf}
+\end{document}

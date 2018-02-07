@@ -1,0 +1,29 @@
+#include "Etudiant.hpp"
+
+
+namespace enseirb{
+  
+  Etudiant::Etudiant(const Chaine &nom, const Chaine &filiere):
+    Personne(nom), _filiere(filiere) {}
+  
+  
+  Chaine Etudiant::filiere(){
+    return _filiere;
+  }
+
+  Chaine Etudiant::enseignement() {
+    return _enseignement;
+  }
+
+  void Etudiant::setEnseignement(const Chaine &ens){
+    _enseignement = ens;
+  }
+
+  Chaine Etudiant::nom() const {
+    
+    static Chaine pre("Eleve: ");
+    Chaine C = pre + nom();
+    return C;
+  }
+
+}

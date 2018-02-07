@@ -1,0 +1,45 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\title{Rapport de Compilation}
+\date{Le 10 décembre 2014}
+\maketitle
+
+\begin{center}
+  Groupe composé de Aurélien Nizet, Pierre Gaulon, Reda Boudjeltia, et Victor Dury.
+\end{center}
+
+\section{Choix de l'extension}
+Nous avons choisi la troisième extension, à savoir la vérification statique et dynamique du code. Le choix de cette extension s'est surtout fait parce que nous pensons que c'est un élément qui manque à GCC. En effet, beaucoup d'erreurs de débutants surviennent à cause d'un dépassement de tableau dans une boucle ou sur un accès, et ne peut se remarquer qu'à l'exécution, alors que finalement ce type d'erreur est prévenu lors de la compilation d'autres langages tels que le Java. Et même plus que le Java, cette extension propose de faire cette vérification avec l'allocation dynamique des tableaux, à savoir \textit{malloc} et \textit{realloc}.
+De plus la gestion des \textit{return}, nous oblige à gérer les différents branchements conditionnels pour vérifier qu'à chacun correspond un \textit{return} de la dite fonction. Nous pensons que ce type de problème est intéressant à gérer puisqu'il faut faire attention à chacun des cas du branchement.
+
+\section{Choix des tests}
+\subsection{Premier test}
+Le premier test vérifie le bon fonctionnement du non-dépassement des bornes d'un tableau alloué statiquement. Ce test doit normalement être compilé sans erreurs.
+\subsection{Deuxième test}
+Le deuxième test met en place le dépassement des bornes d'un tableau alloué statiquement. Ce test doit provoquer une erreur de notre compilateur.
+\subsection{Troisième test}
+Ce test met en place un branchement conditionnel où il est possible que la fonction f ne retourne rien. Ce test doit provoquer une erreur de notre compilateur.
+\subsection{Quatrième test}
+Ce test possède le même branchement conditionnel, mais avec \textit{return} en dehors de ce branchement. Ce test doit donc compiler sans erreurs.
+\subsection{Cinquième test}
+Ce test met encore en place le branchement conditionnel précédent, mais avec un \textit{else} comprenant un \textit{return}, ainsi la fonction retournera toujours quelque chose. Ce test doit donc compiler.
+\subsection{Sixième test}
+Ce test met en place une fonction sans type de retour, et son code ne possède pas de \textit{return}. Ce test doit donc compiler sans problèmes.
+\subsection{Septième test}
+Ce test met en place la même procédure (fonction sans type de retour), mais celle-ci renvoie un \textit{int}. Ce test ne doit donc pas passer.
+\subsection{Huitième test}
+Dans ce test nous vérifions le dépassement des bornes d'un tableau alloué dynamiquement. Ce test doit donc provoquer une erreur.
+\subsection{Neuvième test}
+Dans ce test nous reprenons le même tableau alloué dynamiquement, mais cette fois-ci ses bornes ne sont pas dépassées. Ce test devra compiler sans erreurs.
+\subsection{Dixième test}
+Dans ce test, nous retournons un \textit{float} dans une fonction qui retourne normalement un \textit{int}. Ce test doit donc provoquer une erreur.
+\subsection{Onzième test}
+Ce test met en place plusieurs branchements conditionnels comparant deux entiers. Dans le premier branchement on vérifie la supériorité d'une variable par rapport à l'autre, puis dans un \textit{else} la supériorité opposée. Dans un \textit{if} séparé, nous vérifions l'égalité des variables. Dans chacun de ces branchements il y a un \textit{return}. Ainsi il devrait compiler sans erreurs.
+\subsection{Douzième test}
+Dans le douzième test, nous testons l'inégalité de deux variables. Cela se fait avec un \textit{if, else if}, et il y a un \textit{return} dans chacun d'eux. Ce test doit donc aussi compiler. On différencie ce test du précédent parce que dans ce cas les \textit{return} sont répartis dans deux blocs \textit{if}, mais inclus l'un dans l'autre, alors que dans le test précédent deux blocs \textit{if} sont séparés, l'un n'est pas inclus dans le reste.
+
+\end{document}

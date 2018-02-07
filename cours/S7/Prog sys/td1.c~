@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+
+int ain int argc, char *argv[]) {
+  
+  int i;
+  for(i=0;i<argc;i++) {
+    size_t len = strlen(argv[i]);
+    size_t ret = write(STDOUT FILENOO,argv[i],len);
+    if(ret == -1) {
+      perro("write");
+      return EXIT_FAILLURE;
+    }
+      
+    

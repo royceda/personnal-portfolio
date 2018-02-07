@@ -1,0 +1,21 @@
+MODELE RELATIONNEL
+
+
+
+MEMBRE( _id, nom, prenom, mail, telephone, #Adresse) //
+
+AVIS( #membre_id, #reference, note, commentaire) //
+
+PRODUITS( _reference, designation, descriptif, quantité, prix, #catalogue); //
+
+CATALOGUE( _ID, nom, MAJ); //
+	
+PROMO( _ID, pourcentage, #catalogue);  //
+
+COMMANDE( _ID, #prod, quantité, #ncl); //
+
+CODE_PROMO( #ncl, #ncmd, pourcentage); ncmd=null ou une commande //
+
+EXPEDITION( _nliv, #nadr, date); //  
+
+ADRESSE( _ID, ville, num, rue, code_postal, pays); //

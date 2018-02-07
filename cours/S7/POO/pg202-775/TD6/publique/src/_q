@@ -1,0 +1,20 @@
+package tec;
+
+class Sportif extends PassagerAbstrait{
+        
+    Sportif(String nom, int destination, Caractere carac){
+	super(nom, destination, carac);
+    }
+
+
+    void choixPlaceMontee(Bus b, int arret){
+	(b.aPlaceDebout())
+	    b.demanderPlaceDebout(this);	    
+    }
+    
+	
+
+
+
+
+}

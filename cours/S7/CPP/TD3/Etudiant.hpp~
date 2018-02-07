@@ -1,0 +1,18 @@
+#ifndef __ETUDIANT_HPP__
+#define __ETUDIANT_HPP__
+
+
+namespace enseirb{
+
+  class Etudiant {
+  private:
+    Chaine _filiere;
+    
+  public:
+
+
+
+  };
+} // fin du  namespace
+
+#endif

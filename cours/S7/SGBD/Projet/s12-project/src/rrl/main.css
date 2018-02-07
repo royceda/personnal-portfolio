@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+#contener_logo{
+	display:inline-block;
+}
+#contener_logo img{
+	width:40%;
+	margin-left:4%;
+}
+#connexion{
+	display:inline-block;
+	float:right;
+	margin-top:2%;
+	position:relative;
+	width:20%;	
+}
+#connexion *{
+	display:inline-block;
+	vertical-align: middle;
+}
+#connexion label{
+	font-size: 1.3em;
+}
+#connexion div{
+	display: inline-block;
+	width:100%;
+}
+#connexion input{
+	//float:right;
+	display:inline-block;
+	right:0;
+	width:70%;
+}
+#connexion input[type=submit]{
+	float:right;
+	width:20%;
+	border:0px;
+	cursor:pointer;
+	font-size:1em;
+	background-color: white;
+	color:black,
+}
+
+#connexion a{
+	float: right;
+	text-decoration: none;
+	color:black;
+}
+#password{
+	float:right;
+}
+#login{
+	float:right;
+}

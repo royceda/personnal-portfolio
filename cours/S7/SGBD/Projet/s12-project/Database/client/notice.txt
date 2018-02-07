@@ -1,0 +1,1 @@
+executer seulement le script.sql ( "source script.sql");

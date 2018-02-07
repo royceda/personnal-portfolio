@@ -1,0 +1,5 @@
+Arrêt numéro : 0 Nombre d'entrées : 0 Nombre de sorties : 0
+Arrêt numéro : 1 Nombre d'entrées : 2 Nombre de sorties : 0
+Arrêt numéro : 2 Nombre d'entrées : 1 Nombre de sorties : 0
+Arrêt numéro : 3 Nombre d'entrées : 0 Nombre de sorties : 1
+Arrêt numéro : 4 Nombre d'entrées : 0 Nombre de sorties : 2

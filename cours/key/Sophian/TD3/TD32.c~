@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <unistd.c>
+
+
+#ifdof UTILISER_FPRINTF1
+
+
+
+
+
+
+
+
+
+
+
+#else
+
+
+
+

@@ -1,0 +1,91 @@
+ Crée ou récup ère un identifiant de mémoire partagée à l'aide à de
+shmget(2) et ftok(3).
+Pour la création de la clé à l'aide deftok(3), on utilisera le nom d'un fichier 
+système (par ex ./etc/bashrc). 
+Pour shmget(2), on utilisera une taille de 4 octets et p our le flag, la
+valeur IPC_CREAT | 0644.
+Attache le segment ainsi identifié à l'espace virtuel du processus, avec
+shmat(2), comme un tableau d'entiers puis incrémente le premier entier du 
+tableau et l'affiche. 
+Détache le segment de l'espace du pro cessus avec shmdt(2) et quitte:
+
+
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char**argv){
+
+  int proj_id = 1;
+  const char *pathname = "/etc/bash.bashrc";
+  key_t key = ftok(pathname, proj_id);
+  if(key == -1)
+    {
+    perror("ftok ");
+    exit(1);
+    }
+  size_t size = sizeof(int);
+  int id =  shmget(key,size,IPC_CREAT | 0644);
+
+  int *t = shmat(id, NULL, 0);
+  if( t ==  -1)
+    {
+    perror("shmat ");
+    exit(1);
+    }
+  t[0]++;
+  printf(" t[0] = %d \n", t[0]);
+ 
+  shmdt(t);
+  
+  if(argc > 1)
+  shmctl( id, IPC_RMID , NULL);
+ 
+  return EXIT_SUCCESS;
+}
+
+-----------------------------------------------------------------------------
+ Ecrire un programme qui lance 8 nouveaux threads (en plus de celui du programme
+ principal) sur une fonction void *start(void *) qu'on écrira. 
+Cette fonction affichera le PID du pro cessus. Le PID sera transmis à la 
+fonction start par pthread_create par son dernier argument. On compilera avec 
+l'argument -lpthread.
+La fonction pthread_join(3) permet d'attendre un thread identifié par son 
+THREAD ID (donné lors de l'app el de pthread_create . 
+Modifiez le programme précédent p our que le thread principal attende tous les 
+threads qu'il a crée puis ache un message sur la sortie standard:
+
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+void* start(void * pid)
+{
+  printf("pid : %u \n", (unsigned int)pid);
+  return NULL;
+}
+
+int main(int argc, char**argv){
+  
+  pthread_t thread;
+  pthread_t th[8];
+  pid_t x = getpid();
+  
+  //pthread_create(&thread, NULL, start,(void *)getpid());
+  
+  for(int i = 0; i<8; i++)
+    pthread_create(&th[i], NULL, start,(void *)getpid());
+  
+   for(int i = 0; i<8; i++)
+     {
+       void *ret;
+       pthread_join(th[i],&ret);
+     }
+
+   printf("processus %d termine \n", getpid());
+  //  pthread_join(thread,NULL);
+  return EXIT_SUCCESS;
+}

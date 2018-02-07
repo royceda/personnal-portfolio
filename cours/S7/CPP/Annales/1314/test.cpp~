@@ -1,0 +1,19 @@
+#include <iostream>
+
+class A{
+public:
+  void m(){printf("A\n");};
+};
+
+
+class B{
+public:
+  void m(){printf("B\n");};
+  void m(int a){printf("Bi\n");};
+};
+
+class C:public B{
+public:
+  void m(){printf("C\n");};
+
+  

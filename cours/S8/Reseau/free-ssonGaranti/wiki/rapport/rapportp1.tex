@@ -1,0 +1,110 @@
+\section{Introduction}
+Ce projet nous propose d'implémenter un programme qui simulera un aquarium sur plusieurs écrans. Chaque écran devra afficher les poissons présents sur le noeud qu'il représente. En effet l'aquarium est géré avec l'aide d'un graphe, chaque écran représente un noeud et les poissons peuvent bouger dans tout l'aquarium et donc changer de noeud. \\
+Ce projet à une architecture client-serveur centralisée, le serveur effectuera tous les calculs et transmettra ensuite les informations aux différents clients et affichages.\\
+L'utilisateur doit saisir différentes commandes dans les consoles du serveurs et des clients qui lui permettrons de réguler plusieurs paramètres.  Ansi le serveur laisse la possibilité de gérer le graphe grâce à sa console alors que les consoles clients permettent de gérer la population de poissons présente dans l'aquarium.\\
+Chaque client est lié à un noeud du graphe, il ne peut y avoir plus de clients que de noeuds et chaque noeud peut être lié à seulement un client.\\
+Bien que les langages ne sont pas réellement imposés, un langage objet doit être utilisé pour l'interface client alors que le serveur doit être codé en C.
+
+
+\section{Mode utilisateur}
+Lors du lancement du programme ni le graphe ni l'aquarium ne sont définis, c'est l'utilisateur qui rentrera des commandes capables de gérer le graphe et les affichages.
+\subsection{Console serveur}
+\label{sec:console}
+La console serveur permet de créer un graphe et de le modifier tout au long de l'utilisation. Certaines actions sont possibles :
+\begin{itemize}
+\item Charger un graphe à partir d'un fichier avec la commande \textit{load <path>}
+\item Afficher un graphe déjà chargé avec la commande \textit{show}
+\item Ajouter une arête entre deux noeuds avec la commande \textit{add link <$noeud_1$> <$noeud_2$>}
+\item Supprimer une arête entre deux noeuds avec la commande \textit{del link <$noeud_1$> <$noeud_2$>}
+\item Supprimer un noeud avec la commande \textit{remove <noeud>}
+\item Sauvegarder le graphe mémoire dans un fichier avec la commande \textit{save <path>}
+\end{itemize}
+
+Bien que l'utilisateur puisse modifier le graphe en supprimant des noeuds ou arêtes, il ne peut ajouter un noeud. En effet le graphe devra toujours être défini dans un fichier de configuration qu'il faudra charger au début du programme.
+Le fichier de configuration doit suivre un modèle afin d'être parsé correctement par le programme. \\
+
+ \noindent graph Aquarium \{\\
+    \indent n1 [label="N1"];\\
+    \indent n2 [label="N2"];\\
+    \indent n3 [label="N3"];\\
+    \indent n4 [label="N4"];\\
+    \indent n1 -- n2 [label="3"];\\
+    \indent n1 -- n3 [label="2"];\\
+    \indent n2 -- n4 [label="1"];\\
+    \indent n3 -- n4 [label="4"];\\
+\} \\
+\label{the_label}
+Ce format définit un graphe ayant 4 noeuds et 4 arêtes.
+
+\subsection{Console client}
+La console client permet de gérer la population de poissons présents dans l'aquarium. Certaines actions sont possibles:
+\begin{itemize}
+\item Avoir le statut du client avec la commande \textit{status}
+\item Ajouter un poisson dans l'aquarium avec la commande \textit{addFish  <type> at <$depart_x$>x<$depart_y$>, <$cadre_x$>x<$cadre_y$>  <routineDeplacement>}
+
+\item Supprimer un poisson avec la commande \textit{delFish <name>}
+\item Lancer la routine de déplacement avec la commande \textit{startFish <name>}
+\item Avoir les informations  concernant les poissons présents dans le noeud correspondant au client avec la commande  \textit{getFishes}
+\item Avoir les informations  concernant les poissons présents dans le noeud correspondant au client en continue avec la commande \textit{getFishesContinuously}
+\item Demander une déconnexion avec \textit{log out}
+\end{itemize}
+
+Il n'y a aucun poisson présent dans l'aquarium au démarrage du programme, c'est l'utilisateur qui devra créer chaque poisson s'il veut donner un peu de vie à son aquarium.
+
+
+\section{Gestion du graphe}
+
+\indent Comme vu auparavant, l'utilisateur devra avoir la possibilité de gérer un graphe, et associer chaque noeud du graphe à un aquarium. Par conséquent, nous avons implémenté un parseur de commandes permettant à l'utilisateur de charger un graphe, puis d'ajouter ou de retirer des arêtes à ce graphe, de lui retirer des noeuds, de pouvoir l'afficher ou bien simplement de quitter le programme.\\ Pour pouvoir faire cela, nous avons utilisé la bibliothèque $GraphViz$, et implémenté les commandes suivantes:\\
+\begin{itemize}
+\item Afin de charger le graphe (le graphe doit être placé dans un fichier séparé, et doit avoir le format défini en~\ref{the_label}), l'utilisateur devra écrire la commande \textit{load <path>}. Cette commande est reconnue grâce à la fonction de $GraphViz$: $g = agread(graph\_file, NULL)$.
+\item Afin de retirer un noeud du graphe, la commande à entrer est: \textit{remove <noeud>} correspondant à la fonction $agdelete(g, ntmp)$, avec ntmp le noeud en question, et g le graphe déjà chargé.
+\item Pour afficher le graphe, l'utilisateur fera simplement appel à la commande \textit{show}, et le parseur effectuera $agwrite(g, stdout)$.
+\item Pour ôter une arête entre deux noeuds, la commande est: \textit{del link<$n_1$ $n_2$}, avec $n_1$ et $n_2$ le label des deux noeuds en question. Grâce à ce label, les deux noeuds sont retrouvés et sont respectivement placés dans les variables $tmp1$ et $tmp2$. \\Puis, la fonction $agdeledge(g, agedge(g, tmp1, tmp2, NULL, FALSE))$,  s'occupe de retirer l'arête. L'argument FALSE permet de ne pas créer l'arête si elle n'existe pas.
+\item Pour ajouter une arête entre deux noeuds, l'utilisateur doit écrire \textit{add link $n_1$ $n_2$}. Les deux noeuds sont à nouveau placés dans les variables $tmp1$ et $tmp2$, puis le parseur appelle la fonction $agedge(g, tmp1, tmp2, NULL, TRUE)$.
+\end{itemize}
+\section{Un aquarium et des poissons}
+
+\subsection{Les poissons}
+
+\indent La structure poisson est caractérisée par: \\
+\begin{itemize}
+\item Un entier permettant d'identifier le poisson.
+\item Une chaîne de caractères, son nom.
+\item Une chaîne correspondant à l'espèce du poisson.
+\item Une chaîne correspondant au label du noeud dans le graphe où il est placé.
+\item Une chaîne correspondant décrivant la routine de déplacement que le poisson suivra pour arriver à sa position de destination.
+\item Une coordonnée décrivant la position actuelle du poisson.
+\item Une coordonnée décrivant les dimensions du rectangle dans lequel il lui est permis de naviguer.
+\item Une coordonnée décrivant la position de destination du poisson.
+\item Un entier correspondant au temps nécéssaire pour arriver à sa position de destination.
+\end{itemize}
+Cette structure poisson est reliée à une structure aquarium contenant tous les poissons.
+
+\subsection{L'aquarium}
+\indent Un aquarium se doit d'être un conteneur de poissons et englober le graphe. Nous avons ainsi créé une structure aquarium définie par un tableau de poissons, un graphe, et le nombre de poissons qui facilite le parcours du tableau.
+
+
+\subsection{Les actions permises}
+
+\indent L'utilisateur est maître de la population de l'aquarium. Il a le pouvoir d'ajouter, de pêcher, ou d'activer un déplacement pour un poisson. Le serveur quant à lui le tient informé des caractéristiques de chacun des poissons lorsque la requête est demandée via les méthodes $getFishes$, $getFishesContinuously$ et $status$.
+
+\subsubsection{Les messages reçus du serveur}
+\indent Le serveur reçoit des messages de la part des clients connectés, correspondants aux commandes effectuées sur les poissons à laquelle le serveur ajoute le numéro du noeud demandant la requete, sous la forme de chaînes de caractères. Afin de comprendre le message, un parseur décompose la chaîne en un tableau de chaînes divisant les mots du message séparés par un espace. Ainsi, le pointeur vers la première case du tableau nous renseigne sur l'action à effectuer, et ainsi sur la fonction à appeler. Les paramètres des fonctions sont contenues dans la chaînes.
+
+\subsubsection{Créer un nouvel aquarium}
+
+\indent La méthode $struct$ $aquarium$ $new\_aquarium(Agraph\_t*)$ est le constructeur de la structure aquarium. Le seul paramètre de cette fonction permettra de lier le graphe à l'aquarium. Puisque le graphe peut être modifié par l'utilisateur tout au long de la vie du processus, un pointeur est nécessaire pour une synchronisation entre l'aquarium et le graphe. \\
+\indent Ainsi, nous allouons l'espace nécessaire pour une structure aquarium, puis nous plaçons le graphe dans la structure et nous initialisons son nombre de poissons à 0.
+
+\subsubsection{Ajouter et Enlever un poisson}
+
+\indent Afin d'ajouter un poisson, le serveur nous communique directement la commande du client concaténée avec le label du noeud correspondant au client. \\Ensuite, la méthode $int$ $addfish$($char*$,  $struct$ $aquarium*)$ décompose le message reçu. Un poisson est créé, et les informations contenues dans le message servent à initialiser le nouveau poisson demandé par l'utilisateur. Enfin, une fonction $add\_aqua$ permet d'ajouter réellement le poisson au tableau de poissons de la structure aquarium. \\
+\indent Le retrait d'un poisson se fait après le parcours dans l'aquarium qui cherchera le poisson dont le nom est renseigné par l'utilisateur. Les champs des différentes structures sont mises à jour.
+
+\subsubsection{Demande d'informations}
+L'utilisateur peut demander des informations sur les poissons à tout moment. Plusieurs commandes sont disponibles, $status$, $getFishes$ et $getFishesContinuously$.\\
+Une fonction $status$ permet de répondre à la commande du même nom. Cette fonction parcourt simplement l'aquarium principal et compare l'$id\_view$ de chaque poisson et celui renseigné dans le message.\\
+ Lorsqu'un poisson a un $id\_view$ égale à celui indiqué, son nom est récupéré dans une chaine de caractères. $status$ renvoie alors la chaine resultant de la concaténation du nom de chaque poisson présent dans la vue demandée.\\
+Une fonction $getFishes$, de la meme manière que $status$, renvoie des informations sur les poissons présents sur la vue courante.
+Les informations renvoyées sont cependant bien plus précises que le seul nom renvoyé par $status$. A plus long terme ce sont les informations contenues dans cette réponse du serveur à la demande $getFishes$ qui permettront au programme d'affichage d'actualiser les positions et états de chaque poisson.\\
+La demande $getFishesContinuously$ n'est en réalité qu'un appel continu à $getFishes$. C'est alors le contrôleur principal qui lancera un thread executant cette routine.

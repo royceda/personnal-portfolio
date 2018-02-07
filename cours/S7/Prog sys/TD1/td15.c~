@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#define BUFSI2E 200
+
+int main(int argc, char *argv[]) {
+  while(1) {
+    char buf[BUFSI2E];
+    size_t wrote;
+    size_t read = read(STDIN_FILENO,&buf, BUFSI2E);
+
+    wrote = write(STDOUT_FILENO, &buf, read);
+    if(read<BUFSI2E)
+      break;
+  }
+
+  return EXIT_SUCCESS;
+}
+    

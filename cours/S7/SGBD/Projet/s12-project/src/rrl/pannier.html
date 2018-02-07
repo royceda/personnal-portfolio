@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html class=""><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Index</title>
+<link href="menu.css" rel="stylesheet" type="text/css">
+<link href="head.css" rel="stylesheet" type="text/css">
+<link href="index.css" rel="stylesheet" type="text/css">
+<link href="css/pannier.css" rel="stylesheet" type="text/css">
+<link href="css/produit.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a href="http://localhost/rrl/accueil.html" id="contener_logo"><img src="index_files/logo.png" class="logo"></a>
+<form action="membres/seco.php" id="connexion">
+<div><label for="login">Login</label><input id="login" name="login" type="text"></div>
+<div><label for="password">Pass</label><input id="password" name="password" type="password"></div>
+<div class="connexion">
+	<a href="inscription.php">register</a> 
+	<a href="index.php?c=1">log in</a>
+</div>
+</form>
+
+<div id="menuH">
+	<a class="menuitemH_a" href="">Accueil</a>
+	<a class="menuitemH" href="">Catalogue 1</a>
+	<a class="menuitemH" href="">Catalogue 2</a>
+	<a class="menuitemH" href="">Catalogue 3</a>
+	<a class="menuitemH" href="">Autres Catalogues</a>
+	<div style="height:100%;width:1px;"></div>
+</div>
+<div style="display:inline-block;width:100%;">
+<a class="voir_pannier" href="http://localhost/rrl/panier/verifier.php">Cart:<span class="nb_items">0</span> item </a>
+</div>
+
+<h1><span>Pannier</span></h1>
+
+
+<table>
+<tr>
+	<th class="croix"></th>
+	<th class="photo"></th>
+	<th class="description"></th>
+	<th class="quantity">quantity</th>
+	<th class="price">price</th>
+</tr>
+<tr>
+	<td  class="croix"><a href="pannier/delete.php?i=1"><img src="images/cross.png"/></a></td>
+	<td><img src="" alt="photo"/></td>
+	<td>
+	The Name of the item<br>This is the description of the item but it's crossed This the name of the description
+	but it's crossed This the name of the description but it's crossed This the name of the description
+	but it's cr...
+	</td>
+	<td class="quantity">X <form action="pannier/modifier.php?id=1" ><input value="1" name="1"/></form></td>
+	<td class="price">29€</td>
+</tr>
+<tr>
+	<td><a href="pannier/delete.php?i=1" class="croix"><img src="images/cross.png"/></a></td>
+	<td><img src="" alt="photo"/></td>
+	<td>
+	The Name of the item<br>This is the description of the item but it's crossed This the name of the description
+	but it's crossed This the name of the description but it's crossed This the name of the description
+	but it's cr...
+	</td>
+	<td class="quantity">X  <form action="pannier/modifier.php?id=2" ><input value="2" name="2"/></form></td>
+	<td class="price">29€</td>
+</tr>
+<tr>
+	<td class="croix" ><a href="pannier/delete.php?i=1" class="croix"><img src="images/cross.png"/></a></td>
+	<td><img src="" alt="photo"/></td>
+	<td>
+	The Name of the item<br>This is the description of the item but it's crossed This the name of the description
+	but it's crossed This the name of the description but it's crossed This the name of the description
+	but it's cr...
+	</td>
+	<td class="quantity">X <input value="4" name="3"/></td>
+	<td class="price">10€</td>
+</tr>
+<tr>
+	<td><a href="pannier/delete.php?i=1" class="croix"><img src="images/cross.png"/></a></td>
+	<td><img src="" alt="photo"/></td>
+	<td>
+	The Name of the item<br>This is the description of the item but it's crossed This the name of the description
+	but it's crossed This the name of the description but it's crossed This the name of the description
+	but it's cr...
+	</td>
+	<td class="quantity">X <input value="6" name="4"/></td>
+	<td class="price">50€</td>
+</tr>
+
+<tr>
+	<td class="croix"></td>
+	<td></td>
+	<td></td>
+	<td class="quantity">Total items</td>
+	<td class="price">89€</td>
+</tr>
+
+<tr>
+	<td class="croix"></td>
+	<td></td>
+	<td></td>
+	<td class="quantity"><strong>Frais de port</strong></td>
+	<td class="price">5€</td>
+</tr>
+<tr>
+	<td class="croix"></td>
+	<td></td>
+	<td></td>
+	<td class="quantity"><strong>total</strong></td>
+	<td class="price">94€</td>
+</tr>
+
+</table>
+<div class="center">
+<div class="confirmer"><a href="pannier/confirmer.php?c=1">CONFIRMER</a></div>
+
+<div id="bottom">
+	<a href="http://www.enseirb-matmeca.fr/">
+		<img class="enseirb" src="index_files/logo_enseirb.png">
+	</a>
+	<div class="copyright">
+		<div class="copy">©</div>
+		<div class="names">
+			<div class="name">Reda Boudjeltia</div>
+			<div class="name">Lionel Adotevi</div>
+			<div class="name">Reda Rahal Sabir</div>
+		</div>
+
+	</div>
+</div>
+
+</body>
+</html>
+</div>

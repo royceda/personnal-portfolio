@@ -1,0 +1,22 @@
+-- Liste des creations des tables ainsi de leur contraintes en mysql
+
+
+-- La DB
+
+CREATE DATABASE rrl;
+
+
+-- Les tables
+
+CREATE TABLE menbre(
+       id        INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+       nom       VARCHAR(12),
+       prenom    VARCHAR(12),
+       mail      VARCHAR(24),
+       telephone INTEGER,
+       adresse   INTEGER REFERENCES id(adresse));
+
+CREATE TABLE adresse(
+       id INTEGER PRIMARY KEY NOT NULL AUTO-INCREMENT,
+       ville VARCHAR(12),
+       rue 

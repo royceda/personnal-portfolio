@@ -1,0 +1,13 @@
+import MaClasse;
+
+class Use{
+
+    public static void main(){
+	MaClasse tache = new MaClasse();
+
+	tache.run();
+
+
+
+    }
+}

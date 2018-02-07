@@ -1,0 +1,1 @@
+javac -d build/ src/* && javac -d build-tstAutobus/ -cp build/ tstAutobus/* && javac -d build-tstPassager/ -cp build/ tstPassager/*

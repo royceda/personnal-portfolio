@@ -1,0 +1,31 @@
+#menuH{
+  margin-top:1%;
+  background-color:black;
+  color:white;
+  height:40px;
+}
+#menuH *{
+  display:inline-block;
+  vertical-align: middle;
+  width:19.5%;
+  text-align:center;
+}
+#menuH a {
+  border-left:0.5px solid #B5B5B5;
+  color:white;
+  text-decoration:none;
+}
+#menuH a:hover{
+  color:#B5B5B5;
+}
+.voir_pannier{
+  display:block;
+  float:right;
+  margin-bottom:0%;
+  text-decoration: none;
+  color:#B5B5B5;
+  margin-right:5px;
+}
+#menuH .menuitemH_a{
+	border:0px;
+}

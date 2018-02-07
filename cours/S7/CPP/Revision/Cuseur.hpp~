@@ -1,0 +1,21 @@
+#ifndef __CURSEUR__
+#define __CURSEUR__
+
+#include "./chaine4/Chaine.hpp"
+
+namespace enseirb{
+
+  public class Curseur{
+
+  private:
+    int _position;
+    Chaine
+
+
+
+
+
+
+  };
+}
+#endif

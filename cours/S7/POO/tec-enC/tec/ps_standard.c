@@ -1,0 +1,75 @@
+#include <stdlib.h>
+
+static const char const *version __attribute__((unused))="Vers: 2.1";
+
+#include "autobus.h"
+#include "ps_standard.h"
+#include "__fonctions_internes.h"
+
+
+
+
+struct ps_standard {
+  char *nom;
+  bool assis;
+  bool debout;
+  long destination;
+};
+
+struct ps_standard* ps_std_creer(char *nom, long arret) {
+  struct ps_standard* st = malloc(sizeof(struct ps_standard));
+    st->nom = nom;
+    st->debout = st->assis = false;
+    st->destination = arret;
+    return st;
+}
+
+void ps_std_liberer(struct ps_standard *p) {
+  free(p);
+}
+
+void ps_std_monter_dans(struct ps_standard *p, struct autobus *a) {
+  if (__atb_a_place_assise(a))
+    __atb_demander_assise(a, p);
+  else if (__atb_a_place_debout(a))
+    __atb_demander_debout(a, p);
+}
+
+char *ps_std_nom(const struct ps_standard *p) {
+  return p->nom;
+}
+
+bool ps_std_est_dehors(const struct ps_standard *p) {
+  return !ps_std_est_assis(p) && !ps_std_est_debout(p);
+}
+
+bool ps_std_est_assis(const struct ps_standard *p) {
+  return p->assis;
+}
+
+bool ps_std_est_debout(const struct ps_standard *p) {
+  return p->debout;
+}
+
+// fonctions internes
+void __ps_std_accepter_sortie(struct ps_standard *p) {
+  p->debout = p->assis = false;
+}
+
+void __ps_std_accepter_assise(struct ps_standard *p) {
+  p->assis = true;
+  p->debout = false;
+}
+
+void __ps_std_accepter_debout(struct ps_standard *p) {
+  p->debout = true;
+  p->assis = false;
+}
+
+void __ps_std_nouvel_arret(struct ps_standard *p, 
+			   struct autobus *a, 
+			   int numero_arret) {
+  if (p->destination == numero_arret)
+    __atb_demander_sortie(a, p);
+}
+

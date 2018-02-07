@@ -1,0 +1,9 @@
+#include <Chaine.hpp>
+
+
+unsigned in taille() {
+
+  //....
+
+
+}

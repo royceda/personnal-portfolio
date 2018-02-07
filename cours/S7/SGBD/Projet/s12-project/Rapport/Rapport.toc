@@ -1,0 +1,23 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}Contexte du projet et besoins}{3}
+\contentsline {chapter}{\numberline {2}Partie Base de donn\'ees}{5}
+\contentsline {section}{\numberline {2.1}Mod\'elisation conceptuelle}{5}
+\contentsline {section}{\numberline {2.2}Mod\'elisation relationnelle}{5}
+\contentsline {section}{\numberline {2.3}R\'ealisation SQL}{5}
+\contentsline {subsection}{\numberline {2.3.1}Les tables, contraintes, et requetes d'essais}{5}
+\contentsline {subsection}{\numberline {2.3.2}Les vues}{6}
+\contentsline {section}{\numberline {2.4}Les triggers}{6}
+\contentsline {subsection}{\numberline {2.4.1}Les besoins}{6}
+\contentsline {subsection}{\numberline {2.4.2}Les erreurs personnalis\'ees}{7}
+\contentsline {chapter}{\numberline {3}Partie conception Web}{8}
+\contentsline {section}{\numberline {3.1}Gestion de l'accueil}{8}
+\contentsline {section}{\numberline {3.2}Les cat\'egories}{8}
+\contentsline {section}{\numberline {3.3}Produit}{9}
+\contentsline {section}{\numberline {3.4}Gestion du panier}{9}
+\contentsline {section}{\numberline {3.5}Connexion et Inscription}{9}
+\contentsline {section}{\numberline {3.6}Admin}{10}
+\contentsline {subsection}{\numberline {3.6.1}Statistique}{10}
+\contentsline {subsection}{\numberline {3.6.2}Ajout}{10}
+\contentsline {subsection}{\numberline {3.6.3}Modifier et supprimer}{10}
+\contentsline {chapter}{\numberline {4}Remarques et am\'eliorations possibles}{11}
+\contentsline {chapter}{\numberline {5}Conclusion}{12}

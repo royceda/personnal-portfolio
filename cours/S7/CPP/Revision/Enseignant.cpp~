@@ -1,0 +1,12 @@
+#include "Enseignant.hpp"
+
+
+
+namespace enseirb{
+  Enseignant::Enseignant(Chaine &nom, int time):
+    Personne(nom), _service(time){}
+
+  int Enseignant::nbHeure() const{
+    return _service;
+  }
+}

@@ -1,0 +1,61 @@
+class EtreVivant
+  def coeur_bat
+    puts "Boum Boum"
+  end
+
+end
+
+#heritage
+class Animal < EtreVivant 
+@@total_cree = 0 #variable de class
+
+  def initialize
+    @parole = "aaaa"
+    @age = 1
+    @@total_cree += 1
+  end
+
+  def initialize(parle = '', age = 3)
+    @parole = parle
+    @age    = age
+    @@total_cree += 1
+  end
+
+  def self.total
+    return @@total_cree;
+  end
+
+  def set_parle(parle)
+    @parle = parle
+  end
+
+  def set_age(age)
+    @age = age
+  end
+
+  def get_parle
+    return @parle
+  end
+
+  def get_age
+    return @age
+  end
+
+end
+
+
+dog = Animal.new
+cat = Animal.new("miaouuu", 2)
+
+
+puts "dog makes #{dog.get_parle} and is #{dog.get_age} old"
+puts "cat makes #{cat.get_parle} and is #{cat.get_age} old"
+
+dog.coeur_bat
+
+dog.set_age(14)
+dog.set_parle("wouafff !")
+
+puts "dog makes #{dog.get_parle} and is #{dog.get_age} old"
+
+puts "creation:  #{Animal.total}"

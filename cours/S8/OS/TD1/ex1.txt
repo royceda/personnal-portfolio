@@ -1,0 +1,30 @@
+1.a Il y 2 processeurs numerotÈ de 0 ‡  1.
+
+Dans le dossier /proc on trouve des fichiers num√©rot√© qui contiennent les stats des processus en cours.
+/proc/self contient des fichiers tel que stack qui contient les adresses de la pile.
+
+C'est un pseudo file System.
+
+
+
+1.b  Colonne PID, user, PR (priority), NI(nice values), VIRT(Virtual memory), SHR(shared memory), RES(), SHR(), S(), %CPU, %mem
+
+1.c  L'ordonnanceur vas essayer d'equilibr√© les processeur
+
+
+2.a quand on en lance 1 il prend 100% d'un processeur environ. Mais plusieurs utilise les deux processeur a tour de role.
+
+avec un printf on affiche sur le terminal et le terminal consomera les ressource processeur.
+
+/dev/null et une sorti diriger vers null
+    
+
+2.b les processus partage les ressources quand ils sont sur le meme processeur
+
+2.c 
+
+
+3.b getpid : 13µs
+    avec syscall: 15µs
+    
+

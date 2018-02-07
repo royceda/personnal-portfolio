@@ -1,0 +1,235 @@
+Ouvrir FIFO en Ecriture:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>       
+#include <unistd.h>
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(int argc,char **argv){
+  int fd;
+  fprintf(stderr,"ecrivain\n");
+  if ((fd=open("fifo",O_WRONLY))==-1){
+    perror("fifo");
+    return EXIT_FAILURE;
+  }
+
+  fprintf(stderr,"fifo ouverte en ecriture\n");
+  close(fd);
+  return EXIT_SUCCESS;
+}
+
+----------------------------------------------------------------------------
+Ouverture FIFO en lecture:
+
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>       
+#include <unistd.h>
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(int argc,char **argv){
+  int fd;
+  fprintf(stderr,"lecteur\n");
+  if ((fd=open("fifo",O_RDONLY))==-1){
+    perror("fifo");
+    return EXIT_FAILURE;
+  }
+
+  fprintf(stderr,"fifo ouverte en lecture\n");
+  close(fd);
+  return EXIT_SUCCESS;
+}
+
+------------------------------------------------------------------------------
+ créez un fichier
+donnees
+qui contient la chaîne de caractères "ab cdefgh"
+2.
+écrivez un programme C qui lit les quatre premiers o ctets de ce chier et les ache
+3.
+écrivez un programme C qui duplique avec
+dup(2)
+le descripteur de chier corresp ondant à ce
+chier, qui lit 4 o ctets depuis le premier descripteur et les ache, puis lit 4 o ctets depuis le
+deuxième descripteur et les ache
+4.
+écrivez un programme C qui fait exactement la même chose mais qui refait un
+open(2)
+du même
+chier au lieu du
+dup(2)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+
+#define CHK(X) do if ((X) == -1) {perror(#X);exit(EXIT_FAILURE);} while(0)
+#define SIZE 4
+#define DONNEES "./donnees"
+
+
+int main (int argc, char** argv) 
+{
+  char buf[SIZE];
+  int fd, newfd; //file descriptor
+  int size;
+  dev_t dev = 0;
+  CHK(fd = open(DONNEES,O_RDONLY));
+  CHK(size = read(fd,buf,SIZE));
+  CHK(write(STDOUT_FILENO,buf,size));
+
+  #ifdef DUP
+  CHK( newfd = dup(fd));
+
+  #else 
+  CHK(newfd = open(DONNEES,O_RDONLY));
+
+  #endif
+
+  CHK(size = read(newfd,buf,SIZE));
+  CHK(write(STDOUT_FILENO,buf,size));
+  close(newfd);
+  close(fd);
+  return EXIT_SUCCESS;
+ }
+
+------------------------------------------------------------------------
+ls:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include <dirent.h>
+#include <errno.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include <limits.h>
+#include <pwd.h>
+#include <grp.h>
+
+#define CHK(X)     \
+                do if ((X)<0) { perror(#X); exit(1); } while (0)
+#define CHK_PTR(X) \
+                do if (!(X)) { perror(#X); exit(1); } while (0)
+
+#define OPT_ALL        0x01
+#define OPT_LONG       0x02
+#define OPT_RECURSIVE  0x04
+
+
+char mode_to_char(mode_t m){
+        if (S_ISREG(m)) return '-';
+        if (S_ISDIR(m)) return 'd';
+        if (S_ISLNK(m)) return 'l';
+        if (S_ISCHR(m)) return 'c';
+        if (S_ISBLK(m)) return 'b';
+        if (S_ISFIFO(m)) return 'f';
+        if (S_ISSOCK(m)) return 's';
+        return '?';
+}
+
+void getusername(char *buffer, uid_t uid) {
+        struct passwd *uinfo;
+        if ((uinfo = getpwuid(uid)))
+                strcpy(buffer, uinfo->pw_name);
+        else
+                snprintf(buffer, _POSIX_LOGIN_NAME_MAX, "%u", uid);
+}
+
+void getgrpname(char *buffer, gid_t gid) {
+        struct group *ginfo;
+        if ((ginfo = getgrgid(gid)))
+                strcpy(buffer, ginfo->gr_name);
+        else
+                snprintf(buffer, _POSIX_LOGIN_NAME_MAX, "%u", gid);
+}
+
+void ls(char *path, int opts) {
+        DIR *dir; // for open/close dir
+        struct dirent *entry; // for readdir
+        struct stat stat; // for stat 
+        char buffer[PATH_MAX]; // for filename
+        char *fname; // for current filename
+        char login[_POSIX_LOGIN_NAME_MAX];
+        char group[_POSIX_LOGIN_NAME_MAX];
+
+        fname = stpcpy(buffer, path);
+        *fname++ = '/';
+
+        CHK_PTR(dir = opendir(path));
+        printf("%s:\n", path);
+
+        while ((entry = readdir(dir))) {
+                if (!(opts & OPT_ALL) && entry->d_name[0] == '.') continue;
+
+                strcpy(fname, entry->d_name); // concatenate filename
+                if (opts & OPT_LONG) {
+                        CHK(lstat(buffer, &stat));
+                        getusername(login, stat.st_uid);
+                        getgrpname(group, stat.st_gid);
+
+                        printf("%c%3o %3d\t%s:%s\t%zd\t%s\t%s",
+                                        mode_to_char(stat.st_mode), stat.st_mode & 0777, stat.st_nlink,
+                                        login, group, stat.st_size, fname, ctime(&stat.st_mtime));
+                } else
+                        printf("%s\n", fname);
+        }
+
+        if (opts & OPT_RECURSIVE) {
+                rewinddir(dir); // Let's start again
+                while ((entry = readdir(dir))) {
+                        if (!(opts & OPT_ALL) && entry->d_name[0] == '.') continue;
+                        if (!(strcmp(entry->d_name, ".") && strcmp(entry->d_name, ".."))) continue; // We have to always skip . and ..
+
+                        strcpy(fname, entry->d_name); // concatenate filename
+                        CHK(lstat(buffer, &stat));
+                        if (S_ISDIR(stat.st_mode)) {
+                                printf("\n");
+                                ls(buffer, opts);
+                        }
+                }
+        }
+
+        CHK(closedir(dir));
+}
+
+
+int main (int argc, char **argv) {
+        int opts = 0;
+        int ch;
+        while ((ch = getopt(argc, argv, "lar")) != -1)
+                switch (ch) {
+                        case 'l':
+                                opts |= OPT_LONG;
+                                break;
+                        case 'a':
+                                opts |= OPT_ALL;
+                                break;
+                        case 'r':
+                                opts |= OPT_RECURSIVE;
+                }
+
+        argc -= optind;
+        argv += optind;
+
+        ls(argc ? *argv : ".", opts);
+}

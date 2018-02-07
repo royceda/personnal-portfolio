@@ -1,0 +1,4 @@
+source base.sql;
+source donnees.sql;
+source triggers.sql;
+source views.sql;

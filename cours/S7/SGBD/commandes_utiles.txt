@@ -1,0 +1,47 @@
+SHOW databases;
+
+CREATE DATABASE nom; //creer
+DROP DATABASE nom; //effacer
+
+USE name; //utilise la BD
+
+CREATE TABLE nom (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(12),
+	food VARCHAR(32),
+	confrmed CHAR(2),
+	sign_up DATE;    //creation de tables exemple
+
+
+DESCRIBE nom_table; //descriptif de la table
+
+INSERT INTO name_table (id, name, confirmed, sign_up)
+	VALUES (NULL,"bjr","y",'2012-03-10'); //ajout dans une table
+
+
+CREATE INTEGRITY on TABLE is "condition sur collone" and ...
+
+
+
+ALTER TABLE adresse ADD CONSTRAINT Cpays
+
+
+UPDATE name_table
+SET
+confirmed='Y'
+WHERE name_table.name='blabla'; //MAJ d'une ligne
+
+
+ALTER TABLE name
+ADD mail VARCHAR(40)
+AFTER name; //ajout d'une collonne
+
+
+DELETE from name_table 
+WHERE name_collumn="text"; //efface une ligne
+
+//export
+mysqldump -u user -p database_name > dtabase_name.sql;
+
+CREATE DATABASE new_database;
+mysqldump -u user -p new_database < new_database.sql;
+	

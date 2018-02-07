@@ -1,0 +1,54 @@
+.bloc_produit{
+  border:1px solid black;
+  margin-left:50px;
+  width:90%;
+  display:block;
+}
+.bloc_produit .titre{
+  width:100%;
+  padding-top:20px;
+  padding-bottom:20px;
+  text-align: center;
+  font-size:1.5em;
+}
+.bloc_produit .photo_produit{
+  width:40%;
+  vertical-align: middle;
+}
+.bloc_produit .description{
+  width:58%;
+  text-align: left;
+  vertical-align: middle;
+}
+.bloc_produit tr *{
+ display:block;
+  text-align:left;
+}
+.bloc_produit tr {
+  width:100%;
+}
+#body .bloc_produit form *{
+  display:block;
+}
+#body .bloc_produit form{
+  display:inline-block;
+}
+#body .bloc_produit table{
+  margin-top:15px;
+  
+  text-align: center;
+  width:100%;
+}
+#body .bloc_produit td, #body .bloc_produit tr{
+  display:initial;
+  text-align: left;
+}
+#body .bloc_produit .confirmer{
+  padding:5px;
+  padding-left:10px;
+  padding-right: 10px;
+  background:black;
+  color:white;
+  margin:20px;
+  font-size: 1.3em;
+}

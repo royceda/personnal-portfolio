@@ -1,0 +1,14 @@
+Explication des choix de conception
+
+
+L'entité expedition: une expedition comprend plusieurs commande et est envoyé à une adresse
+
+L'entité commande: on commande un produit selon une quantié q
+
+L'entité code_promo: Un client possède un code promo et l'utilise sur une et une seul commande
+
+L'entité promo: Une promo s'execute sur un catalogue 
+
+L'entité catalogue: un catalogue contient plusieurs produits MAIS un produit n'est présent que dans un unique catalogue
+
+L'entité avis: un avis est poster par un unique client sur un unique produit

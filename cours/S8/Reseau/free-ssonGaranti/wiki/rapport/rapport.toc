@@ -1,0 +1,29 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {2}Mode utilisateur}{3}
+\contentsline {subsection}{\numberline {2.1}Console serveur}{3}
+\contentsline {subsubsection}{Console client}{3}
+\contentsline {section}{\numberline {3}Gestion du graphe}{3}
+\contentsline {section}{\numberline {4}Un aquarium et des poissons}{3}
+\contentsline {subsection}{\numberline {4.1}Les poissons}{4}
+\contentsline {subsection}{\numberline {4.2}L'aquarium}{4}
+\contentsline {subsection}{\numberline {4.3}Les actions permises}{4}
+\contentsline {subsubsection}{Les messages re\IeC {\c c}us du serveur}{4}
+\contentsline {subsubsection}{Cr\IeC {\'e}er un nouvel aquarium}{4}
+\contentsline {subsubsection}{Ajouter et Enlever un poisson}{4}
+\contentsline {subsubsection}{Demande d'informations}{4}
+\contentsline {section}{\numberline {5}Le contr\IeC {\^o}leur}{5}
+\contentsline {subsection}{\numberline {5.1}le serveur tcp}{5}
+\contentsline {section}{\numberline {6}Partie controleur de la vue}{5}
+\contentsline {subsection}{\numberline {6.1}Le prompt client}{5}
+\contentsline {subsection}{\numberline {6.2}Le parsing de commandes saisies}{5}
+\contentsline {subsection}{\numberline {6.3}Le traitement des commandes re\IeC {\c c}ues}{5}
+\contentsline {subsection}{\numberline {6.4}Le client}{5}
+\contentsline {section}{\numberline {7}Partie Affichage}{6}
+\contentsline {subsection}{\numberline {7.1}Le mod\IeC {\`e}le Poisson}{6}
+\contentsline {subsection}{\numberline {7.2}Dessin d'un poisson}{6}
+\contentsline {subsection}{\numberline {7.3}Dessin de l'aquarium}{6}
+\contentsline {subsection}{\numberline {7.4}Affichage global}{6}
+\contentsline {section}{\numberline {8}Utilisation et r\IeC {\'e}alisation}{6}
+\contentsline {subsection}{\numberline {8.1}Utilisation}{6}
+\contentsline {subsection}{\numberline {8.2}Exemple de rendu}{6}
+\contentsline {section}{\numberline {9}Conclusion}{7}

@@ -1,0 +1,73 @@
+@CHARSET "UTF-8";
+
+#contener_logo{
+	display:inline-block;
+}
+#contener_logo img{
+	width:40%;
+	margin-left:4%;
+}
+#connexion{
+	display:inline-block;
+	float:right;
+	margin-top:2%;
+	position:relative;
+	width:20%;
+	margin-right:1%;
+	
+}
+#connexion div{
+	display: inline-block;
+	width:100%;
+}
+#connexion label{
+	font-size:1.3em;
+}
+#connexion input{
+	//float:right;
+	display:inline-block;
+	right:0;
+	width:70%;
+}
+#connexion input[type=submit]{
+	//float:right;
+	width:40%;
+	background-color: white;
+	border:0px;
+	font-size: :15px;
+	cursor:pointer;
+}
+#connexion a{
+	text-decoration: none;
+	color:black;
+	border:1px solid black;
+	padding:3px;
+}
+#connexion a:hover{
+	text-decoration: underline;
+}
+#password{
+	float:right;
+}
+#login{
+	float:right;
+}
+#connexion .connexion{
+	width:50%;
+	float:right;
+}
+#connexion .connexion *{
+	display:inline;
+}
+#connexion .connexion .login{
+	background-color:black;
+	cursor:pointer;
+	padding-right:15px;
+	padding-left:15px;
+	text-align: center;
+	color:white;
+	padding:5px;
+}
+#connexion .connexion .login:hover{
+	opacity:0.5;
+}

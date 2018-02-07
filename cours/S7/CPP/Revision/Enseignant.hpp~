@@ -1,0 +1,18 @@
+#ifndef __ENSEIGNANT__
+#define __ENSEIGNANT__
+
+#include "chaine3/Chaine.hpp"
+#include "Personne.hpp"
+
+namespace enseirb{
+  class Enseignant:public virtual Personne{
+  private:
+    int _service;
+  public:
+    Enseignant(Chaine&, int);
+    int nbHeure() const;
+  };
+}
+
+
+#endif

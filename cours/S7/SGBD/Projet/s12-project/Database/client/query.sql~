@@ -1,0 +1,24 @@
+USE RRL;
+
+-- Les tables 
+SELECT *
+FROM adresse; 
+
+SELECT *
+FROM membre;
+
+SELECT *
+FROM produit;
+
+SELECT *
+FROM disponibilite;
+
+SELECT *
+FROM promo;
+
+SELECT *
+FROM avis;
+
+SELECT *
+FROM identifiant;
+

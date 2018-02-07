@@ -1,0 +1,24 @@
+#include <unistd.h>
+#include <stdio.h>
+
+
+
+int main(int argc, char *argv[])
+{
+
+//test d'acces
+if(access("./td89.c",F_OK) == 0)
+	printf("existe %d \n", access("./td89.c",F_OK));
+else
+	printf(" doesnt exist %d \n", access("./td89.c",F_OK));
+
+//creation de lien
+link("./touch.r", ".");
+//suppresion de lien
+int res = unlink("./touch.r");
+
+printf("unlink = %d\n", res);
+
+
+return 0;
+}

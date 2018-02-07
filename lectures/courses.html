@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Da</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="ICO/paperplane.ico">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+    <link href="font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body>
+  <div id="bar"></div>
+
+  <!-- Page Content -->
+  <div class="jumbotronb">
+    <h1></h1>
+    <p>.</p>
+  </div>
+
+
+
+
+  <div id="wrapper">
+      <div class="overlay"></div>
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+          <ul class="nav sidebar-nav">
+              <li class="sidebar-brand">
+                  <a href="#">
+                      Courses
+                  </a>
+              </li>
+              <li>
+                  <a href="#">Home</a>
+              </li>
+              <li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bordeaux INP: 1st year<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Algorithms and mathematics</li>
+                    <li><a href="#">Probability and Statistics</a></li>
+                    <li><a href="#">Algorithms</a></li>
+                    <li><a href="#">Theory of graph</a></li>
+
+                    <li class="dropdown-header">Programming</li>
+
+                    <li><a href="#">LaTeX</a></li>
+                    <li><a href="#">Struture of computer</a></li>
+                    <li><a href="www.labri.fr/perso/fmoranda/pg101">C programming</a></li>
+
+                  </ul>
+                </li>
+              </li>
+
+              <li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bordeaux INP: 2nd year<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+
+                    <li class="dropdown-header">Programming and System</li>
+                    <li><a href="#">Compilations</a></li>
+                    <li><a href="#">C++ programing</a></li>
+                    <li><a href="#">System Programming</a></li>
+                    <li><a href="#">Java and OOP</a></li>
+
+                    <li class="dropdown-header">Internet and Network</li>
+                    <li><a href="#">LaTeX</a></li>
+                    <li><a href="#">Struture of computer</a></li>
+                    <li><a href="#">C programming</a></li>
+                    <li><a href="#">Separated link</a></li>
+
+                    <li class="dropdown-header">System and application</li>
+                    <li><a href="#">Cryptology</a></li>
+                    <li><a href="#">Complexity</a></li>
+                    <li><a href="#">Database II</a></li>
+                    <li><a href="#">Operating System</a></li>
+                    </ul>
+                  </li>
+                </li>
+
+
+            <li>
+              <a href="#">Master: Operation Research</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Personnal Works</li>
+                <li><a href="#">Ruby: Weather API</a></li>
+                <li><a href="#">Ruby on Rails: webApp</a></li>
+                <li><a href="#">Java: Theory of graph</a></li>
+
+                <li class="dropdown-header">Enseirb</li>
+
+                <li><a href="#">C: Sudoku</a></li>
+                <li><a href="#">Python: Numerical Recipes</a></li>
+                <li><a href="#">Java: TSP</a></li>
+                <li><a href="#">Open GL: Atom</a></li>
+
+
+                  <li class="dropdown-header">M2: OR</li>
+                  <li><a href="#">Scilab: Financial mathematics</a></li>
+                  <li><a href="#">Java: Knapsack </a></li>
+
+                </ul>
+              </li>
+              <li>
+                <a href="test.php">Private Space</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /#sidebar-wrapper -->
+
+
+          <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+              <span class="hamb-top"></span>
+              <span class="hamb-middle"></span>
+              <span class="hamb-bottom"></span>
+            </button>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8 col-lg-offset-2" id="test">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <link rel="import" href="popDiv.html">
+            </div>
+
+          </div>
+          <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <hr/>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+          <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+        <script src="script.js"></script>
+
+        <script>
+        $(document).ready(function(){
+          $('.dropdown-toggle').dropdown()
+        });
+        </script>
+
+
+        <script>
+        $( "#bar" ).load( "bar.html" );
+        </script>
+
+
+        <script>
+        $( "#footer" ).load( "footer.html" );
+        </script>
+
+        <script>
+        $( "#test" ).load( "operation_research.php" );
+        </script>
+
+
+        <script>
+        var link = document.querySelector('link[rel=imports]');
+        var content = link.imports;
+        var imported = content.query.Selector('.hello');
+        document.body.appendChild(imported.cloneNode(true));
+        </script>
+      </body>
+
+      <html>

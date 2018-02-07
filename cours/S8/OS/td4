@@ -1,0 +1,12 @@
+htt://people.bordeaux.inria.fr/goglin/tmp/fuse.h.tar.gz
+
+et /libfuse.so
+
+
+
+tar xf fuse.h.tar.gz
+
+
+Makefile -I.  -> CPPFLAGS
+-lfuse         -II. -> LDFLAGS
+

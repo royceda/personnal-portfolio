@@ -1,0 +1,7 @@
+CREATE TRIGGER insert_cmd 
+BEFORE INSERT ON commande
+BEGIN
+	IF 
+
+	ENDIF;	
+END;//

@@ -1,0 +1,7 @@
+#include "Chaine.hpp"
+
+
+int Chaine::taille() {
+  
+  return _taille;
+}

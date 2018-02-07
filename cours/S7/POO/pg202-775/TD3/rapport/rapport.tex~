@@ -1,0 +1,67 @@
+\documentclass[a4paper,11pts]{article}
+
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+
+\begin{document}
+
+\title{Compte Rendu du TD numéro 2 de l'équipe Eirb'reteau}
+\date{Pour le 29 septembre}
+\maketitle
+
+\begin{center}
+  Coordinateur : Boudjeltiq reda \\
+  Tandem 1 : Aurélien Nizet, Lionel Adotevi\\
+  Tandem 2 : Victor Dury, Pierre Gaulon\\
+  TD du 26 septembre 2014
+\end{center}
+\maketitle
+
+\section{Introduction}
+
+
+
+\section{}
+
+
+
+\subsection{}
+
+
+\begin{verbatim}
+Du code;
+\end{verbatim}
+
+
+\subsection{Boutez vos neurones}
+\subsubsection{}
+
+
+\subsubsection{}
+
+
+\section{}
+\subsection{}
+
+
+\subsection{Arborescence du projet}
+
+
+
+\begin{verbatim}
+Du code;
+\end{verbatim}
+
+\subsection{}
+
+\begin{verbatim}
+
+\end{verbatim}
+
+
+
+\section{Commentaires}
+
+
+\end{document}

@@ -1,0 +1,46 @@
+\documentclass[a4paper,11pts]{article}
+
+\usepackage[frenchb]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+
+\begin{document}
+
+\title{Compte Rendu du TD numéro 3 de l'équipe Eirb'reteau}
+\date{Pour le 29 septembre}
+\maketitle
+
+\begin{center}
+  Coordinateur : Reda Boudjeltia \\
+  Tandem 1 : Pierre Gaulon, Lionel Adotevi\\
+  Tandem 2 : Victor Dury,  Aurélien Nizet \\
+  TD du 29 septembre 2014
+
+\end{center}
+\maketitle
+
+
+\section{Boutez vos neurones (partie 4 du TD3)}
+Tout d'abord, nous avons commencé par modifier les trois états DEHORS, ASSIS et DEBOUT. Pour les partager, nous en avons fait des variables d'instance (static), et constantes (final), pour qu'elles ne soient plus modifiées. Ces trois variables de la classe \textbf{EtatPassager} sont des instances de la classe \textbf{EtatPassager} elle-même, instanciées par le constructeur par défaut, lors de la compilation de cette classe. En réalité, ce qui différencie ces trois états, c'est simplement leur référence, leur adresse mémoire qui est différente. Il n'y a plus d'état courant. On a donc supprimé les anciens constructeurs, et toutes les références à l'état courant. Pour toutes les méthodes d'accès de cette classe, on compare la référence de la classe utilisée (this), avec les références DEBOUT, ASSIS, DEHORS. Par exemple this==DEHORS va caractériser l'état $estExterieur()$ d'un PassagerStandard. De même pour les autres méthodes d'accès d'état. Pour changer d'état, il suffit simplement de renvoyer l'adresse de l'état ciblé. Par exemple, pour faire assoir un \textbf{PassagerStandard}, il suffit de faire $return ASSIS;$. La méthode $toString()$ a aussi dû être changée. En effet, le switch case n'était pas compatible avec des comparaisons de références, on l'a alors changé en succession de $if$. Enfin, comme nous n'avions plus de constructeur de \textbf{EtatPassager}, mais qu'il faut bien initialiser un état par défaut lors de la construction d'un \textbf{PassagerStandard}, nous avons créé une nouvelle méthode de classe static public EtatPassager $construct()$, qui renvoie la référence de DEHORS. Ainsi, il est possible d'initialiser un \textbf{EtatPAssager}.
+
+\section{Recette}
+Commande pour lancer les tests unitaires dans le répertoire tstPassager : 
+\begin{verbatim}
+java -ea -cp build-tstPassager/:build/ tec.LancerTests
+\end{verbatim}
+Commande pour lancer les tests unitaires dans le répertoire tstAutobus : 
+\begin{verbatim}
+java -ea -cp build-tstAutobus/:build/ tec.LancerTests
+\end{verbatim}
+
+Il faut les exécuter séparément, car les tests d'Autobus dépendant du faussaire de \textbf{PassagerStandard}, et de la classe \textbf{Autobus}, et les tests de \textbf{PassagerStandard} dépendent du faussaire de \textbf{Autobus}, et de la classe \textbf{PassagerStandard}. Pour exécuter correctement les tests, il est donc nécessaire de ne pas mélanger les faussaires (notamment lors des tests de messages envoyés). Ces faussaires sont dans deux répertoires différents, et donc il faut séparer ces répertoires dans l'option $-classpath$, ce qui n'aurait pas été possible en une seule exécution.
+
+Commande de compilation de la classe Simple :
+\begin{verbatim}
+javac -d build/ src/* && javac -d build/ -cp build/ recette/Simple.java
+\end{verbatim}
+Commande d'exécution de la classe Simple :
+\begin{verbatim}
+java -cp build/ Simple
+\end{verbatim}
+\end{document}

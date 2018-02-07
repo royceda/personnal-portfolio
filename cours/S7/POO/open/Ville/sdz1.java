@@ -1,0 +1,53 @@
+import tecb.*;
+
+
+public class sdz1
+{
+    public static void testHeritage()
+    {
+	Ville ny = new Ville("New York", "USA", 1234345);
+	ny.print();
+	Ville city = new Ville();
+	city.print();
+
+	String test = city.getNomVille();
+	System.out.println("variable test: " + test);
+
+	Capitale C1 = new Capitale("Paris","France", 12325870,"Tour Eiffel");
+	C1.print();
+    }
+	
+    public static void testPolymorphisme()
+    {
+	Ville[] tab = new Ville[6];
+	String[] city = {"Paris", "Tokyo", "Londres", "N.Y", "ST.Louis", "D.C"};
+	int[] pop = {172783, 7663739, 2883902, 92883930, 876629, 9877363};
+
+	for(int i = 0; i<6; i++)
+	{
+	    if(i<3)
+		{
+		    Capitale C = new Capitale(city[i], "Inconnu", pop[i], "Royce");
+		    tab[i] = C;
+		}
+	    else
+		{
+		    Ville V = new Ville(city[i], "USA",pop[i]);
+		    tab[i] = V;
+		}
+					   
+	}
+
+	for(Ville V : tab)
+	    {
+		V.print();
+	    }
+    }
+
+
+    public static void main(String[] args)
+    {
+	testPolymorphisme();
+    }
+
+}

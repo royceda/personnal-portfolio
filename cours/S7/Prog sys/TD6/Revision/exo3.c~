@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+#include <pthread.h>
+#include <stdint.h>
+
+
+#define CHK(X) do if ((X) == -1) {perror(#X);exit(EXIT_FAILURE);} while(0)
+#define FIFO "./server1"
+#define SIZEBUF 10
+#define POOL 8
+
+
+void *server(void *a){
+   
+ system("rm server1");
+  ssize_t size;
+  int rt ;
+  dev_t dev = 0;
+  char buf[SIZEBUF];
+  int fd;
+  CHK(mknod(FIFO, S_IFIFO | 0666,dev));
+
+  while(1){
+    CHK(fd = open(FIFO, O_RDONLY));
+    CHK(size = read(fd, buf, SIZEBUF));
+    CHK(rt = write(STDOUT_FILENO, buf, size));
+    close(fd);
+    }
+  return NULL;
+}
+
+
+void *client(void *a){
+  char buf[SIZEBUF];
+  int fd;
+  ssize_t s;
+  int size ;
+
+  while(1){
+    CHK(fd = open(FIFO, O_WRONLY));
+    CHK(fd);
+    CHK( s= read(STDIN_FILENO, buf, SIZEBUF));
+    CHK( size = write(fd, buf, s)); 
+    close(fd);
+    }
+  return NULL;
+ 
+}
+
+
+int main(){
+
+  pthread_t th[8];
+  int ret;
+  int a=1;
+
+  CHK(ret = pthread_create(&th[0], NULL, server, &a));
+  
+  CHK(ret = pthread_create(&th[1], NULL, client, &a));
+  
+
+
+  return 0;
+}

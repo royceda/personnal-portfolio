@@ -1,0 +1,1 @@
+java -ea -cp build-tst/:build/ tec.LancerTests
